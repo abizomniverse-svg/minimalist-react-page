@@ -4,8 +4,18 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    react({
+      include: /\.(jsx|tsx|js|ts)$/,
+      jsxRuntime: 'automatic',
+    }),
+    tailwindcss(),
+  ],
+  esbuild: {
+    jsx: 'automatic',
+    jsxImportSource: 'react',
+  },
   server: {
     port: 5001,
-  }
+  },
 })
