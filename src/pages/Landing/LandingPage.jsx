@@ -1,5 +1,6 @@
 import Navbar from '../../components/layout/Navbar';
 import HeroSection from './HeroSection';
+import HowItWorksSection from './HowItWorksSection';
 import OrderStepsSection from './OrderStepsSection';
 import TrendingPackage from './TrendingPackage';
 import Spotlight from './Spotlight';
@@ -15,6 +16,7 @@ const LandingPage = () => {
     <main className="landing-page relative bg-white">
       <Navbar />
       <HeroSection />
+      <HowItWorksSection />
       <OrderStepsSection />
       <TrendingPackage />
       <WhyTikytop />
