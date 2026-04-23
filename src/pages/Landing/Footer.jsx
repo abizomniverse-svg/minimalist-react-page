@@ -7,13 +7,13 @@ const FOOTER_CONTENT = {
     copyright: "Copyright © 2026 TikyTop. All Rights Reserved.",
     disclaimer: "TikyTop is a standalone social media growth service that is not affiliated with or endorsed by TikTok, Instagram, Facebook, Twitter (X), YouTube, Google, or any other social media platform.",
     paymentIcons: ["Paypal", "Razorpay", "Stripe", "Cashfree"],
-    links: [
-        { label: "About Us", href: "#" },
-        { label: "Terms of Use", href: "#" },
-        { label: "Privacy Policy", href: "#" },
-        { label: "Refund Policy", href: "#" },
-        { label: "Contact Us", href: "#" }
-    ],
+     links: [
+         { label: "About Us", href: "#" },
+         { label: "Terms of Use", href: "/terms-of-service" },
+         { label: "Privacy Policy", href: "/privacy-policy" },
+         { label: "Refund Policy", href: "#" },
+         { label: "Contact Us", href: "#" }
+     ],
     services: [
         {
             category: "TikTok Services",
