@@ -1,5 +1,19 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
+import TikTokIcon from '../../assets/icon/icons8-tiktok-50.svg';
+import InstagramIcon from '../../assets/icon/icons8-instagram-50.svg';
+import YouTubeIcon from '../../assets/icon/icons8-youtube-50.svg';
+
+const getPlatformIcon = (platform) => {
+  switch (platform) {
+    case 'TikTok': return TikTokIcon;
+    case 'Instagram': return InstagramIcon;
+    case 'YouTube': return YouTubeIcon;
+    case 'Twitch': return '🎮';
+    case 'LinkedIn': return '💼';
+    default: return '📱';
+  }
+};
 
 const TESTIMONIALS_CONTENT = {
   title: "What Our Esteemed Users Say About TikyTop",
@@ -12,8 +26,7 @@ const TESTIMONIALS_CONTENT = {
       avatar: "https://i.pravatar.cc/150?u=jessica",
       rating: 5,
       platform: "TikTok",
-      growth: "+149.5K",
-      platformIcon: "🎵"
+      growth: "+149.5K"
     },
     {
       name: "Marcus Chen",
@@ -22,8 +35,7 @@ const TESTIMONIALS_CONTENT = {
       avatar: "https://i.pravatar.cc/150?u=marcus",
       rating: 5,
       platform: "Instagram",
-      growth: "+85K",
-      platformIcon: "📸"
+      growth: "+85K"
     },
     {
       name: "Sarah Williams",
@@ -32,8 +44,7 @@ const TESTIMONIALS_CONTENT = {
       avatar: "https://i.pravatar.cc/150?u=sarah",
       rating: 5,
       platform: "YouTube",
-      growth: "+400K",
-      platformIcon: "▶️"
+      growth: "+400K"
     },
     {
       name: "David Park",
@@ -42,8 +53,7 @@ const TESTIMONIALS_CONTENT = {
       avatar: "https://i.pravatar.cc/150?u=david",
       rating: 5,
       platform: "LinkedIn",
-      growth: "+25K",
-      platformIcon: "💼"
+      growth: "+25K"
     },
     {
       name: "Emily Rodriguez",
@@ -52,8 +62,7 @@ const TESTIMONIALS_CONTENT = {
       avatar: "https://i.pravatar.cc/150?u=emily",
       rating: 5,
       platform: "Instagram",
-      growth: "+200K",
-      platformIcon: "📸"
+      growth: "+200K"
     },
     {
       name: "James Wilson",
@@ -62,8 +71,7 @@ const TESTIMONIALS_CONTENT = {
       avatar: "https://i.pravatar.cc/150?u=james",
       rating: 5,
       platform: "Twitch",
-      growth: "+12K",
-      platformIcon: "🎮"
+      growth: "+12K"
     },
     {
       name: "Amanda Foster",
@@ -72,8 +80,7 @@ const TESTIMONIALS_CONTENT = {
       avatar: "https://i.pravatar.cc/150?u=amanda",
       rating: 5,
       platform: "Instagram",
-      growth: "+175K",
-      platformIcon: "📸"
+      growth: "+175K"
     },
     {
       name: "Ryan Thompson",
@@ -82,8 +89,7 @@ const TESTIMONIALS_CONTENT = {
       avatar: "https://i.pravatar.cc/150?u=ryan",
       rating: 5,
       platform: "TikTok",
-      growth: "+48K",
-      platformIcon: "🎵"
+      growth: "+48K"
     }
   ]
 };
@@ -106,7 +112,11 @@ function TestimonialCard({ testimonial, index }) {
               <span key={i} className="text-[#A6FF00] text-lg">★</span>
             ))}
           </div>
-          <span className="text-2xl">{testimonial.platformIcon}</span>
+          {typeof getPlatformIcon(testimonial.platform) === 'string' ? (
+            <span className="text-2xl">{getPlatformIcon(testimonial.platform)}</span>
+          ) : (
+            <img src={getPlatformIcon(testimonial.platform)} alt={testimonial.platform} className="w-6 h-6" />
+          )}
         </div>
 
         {/* Content */}

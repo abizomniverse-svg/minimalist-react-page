@@ -1,6 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import TikTokIcon from '../../assets/icon/icons8-tiktok-50.svg';
+import InstagramIcon from '../../assets/icon/icons8-instagram-50.svg';
+import YouTubeIcon from '../../assets/icon/icons8-youtube-50.svg';
 
 const TRENDING_PACKAGES = {
   sectionTitle: "Elite Growth Packages",
@@ -17,7 +20,7 @@ const TRENDING_PACKAGES = {
       description: "Real, engaged followers who interact with your content.",
       type: "tiktok",
       badge: "TOP SELLER",
-      icon: "🎵",
+      icon: TikTokIcon,
       features: ["Real Accounts", "Instant Start", "30-Day Refill", "24/7 Support"],
       orders: "847K+"
     },
@@ -30,7 +33,7 @@ const TRENDING_PACKAGES = {
       description: "Premium likes from active, authentic accounts.",
       type: "instagram",
       badge: "BEST VALUE",
-      icon: "📸",
+      icon: InstagramIcon,
       features: ["Active Users", "Instant Delivery", "No Drop Guarantee", "Cancel Anytime"],
       orders: "623K+"
     },
@@ -43,7 +46,7 @@ const TRENDING_PACKAGES = {
       description: "Genuine subscribers who watch and engage.",
       type: "youtube",
       badge: "FASTEST",
-      icon: "▶️",
+      icon: YouTubeIcon,
       features: ["Real Subs", "Monetization Ready", "Analytics", "Priority Support"],
       orders: "412K+"
     }
@@ -110,8 +113,8 @@ const TrendingPackage = () => {
               </div>
 
               {/* Icon */}
-              <div className="p-6 text-center" style={{ background: getGradient(pkg.type) }}>
-                <span className="text-5xl block mb-2">{pkg.icon}</span>
+              <div className="p-6 text-center flex flex-col items-center" style={{ background: getGradient(pkg.type) }}>
+                <img src={pkg.icon} alt={pkg.platform} className="w-16 h-16 mb-2" />
                 <span className="text-white font-bold text-lg">{pkg.platform}</span>
               </div>
 

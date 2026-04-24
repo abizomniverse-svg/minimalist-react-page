@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { isAuthenticated } from '../../utils/auth';
 import { THEME, GLOBAL_CONFIG } from '../../utils/constants';
+import TikTokIcon from '../../assets/icon/icons8-tiktok-50.svg';
+import InstagramIcon from '../../assets/icon/icons8-instagram-50.svg';
+import YouTubeIcon from '../../assets/icon/icons8-youtube-50.svg';
 
 const PLATFORMS = [
-  { id: 'tiktok', name: 'TikTok', icon: '🎵', color: '#FF00C8' },
-  { id: 'instagram', name: 'Instagram', icon: '📸', color: '#00F5D4' },
-  { id: 'youtube', name: 'YouTube', icon: '▶️', color: '#A6FF00' }
+  { id: 'tiktok', name: 'TikTok', icon: TikTokIcon, color: '#FF00C8' },
+  { id: 'instagram', name: 'Instagram', icon: InstagramIcon, color: '#00F5D4' },
+  { id: 'youtube', name: 'YouTube', icon: YouTubeIcon, color: '#A6FF00' }
 ];
 
 const SERVICES = {
@@ -139,13 +142,14 @@ const HeroSection = () => {
                     <button
                       key={platform.id}
                       onClick={() => { setSelectedPlatform(platform.id); setSelectedService(SERVICES[platform.id][0].id); }}
-                      className={`flex-1 py-2.5 rounded-xl border-2 text-sm font-semibold transition-all ${
+                      className={`flex-1 py-2.5 rounded-xl border-2 text-sm font-semibold transition-all flex items-center justify-center gap-1 ${
                         selectedPlatform === platform.id
                           ? 'border-[#FF00C8] bg-[#FF00C8]/10 text-[#FF00C8]'
                           : 'border-gray-200 text-[#64748B] hover:border-gray-300'
                       }`}
                     >
-                      {platform.icon} {platform.name}
+                      <img src={platform.icon} alt={platform.name} className="w-5 h-5" />
+                      {platform.name}
                     </button>
                   ))}
                 </div>
