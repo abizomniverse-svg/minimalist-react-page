@@ -4,6 +4,7 @@ import HowItWorksSection from './HowItWorksSection';
 import OrderStepsSection from './OrderStepsSection';
 import TrendingPackage from './TrendingPackage';
 import PremiumFeatures from './PremiumFeatures';
+import AnalyticsSection from './AnalyticsSection';
 import Spotlight from './Spotlight';
 import TargetedAudience from './TargetedAudience';
 import WhyTikytop from './WhyTikytop';
@@ -20,6 +21,7 @@ const LandingPage = () => {
       <OrderStepsSection />
       <TrendingPackage />
       <PremiumFeatures />
+      <AnalyticsSection />
       <WhyTikytop />
       <TargetedAudience />
       <FaqSection />
