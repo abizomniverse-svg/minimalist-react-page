@@ -2,11 +2,6 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { setSession } from '../../utils/auth';
 
-const DEMO_CREDENTIALS = {
-  username: 'demo@tikytop.com',
-  password: 'demo123'
-};
-
 const LockIllustration = () => (
   <svg viewBox="0 0 200 200" className="w-48 h-48 md:w-64 md:h-64" fill="none">
     {/* Cloud */}
@@ -26,7 +21,7 @@ const LockIllustration = () => (
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
-  const [form, setForm] = useState({ email: DEMO_CREDENTIALS.username, password: DEMO_CREDENTIALS.password });
+  const [form, setForm] = useState({ email: '', password: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
@@ -66,7 +61,7 @@ export default function Login() {
       setIsSubmitting(false);
       setSession({ 
         username: 'demo',
-        email: DEMO_CREDENTIALS.username,
+        email: 'demo@example.com',
         plan: 'pro'
       });
       navigate('/dashboard');
