@@ -1,6 +1,11 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { setSession } from '../../utils/auth';
+
+const DEMO_CREDENTIALS = {
+  username: 'demo@tikytop.com',
+  password: 'demo123'
+};
 
 const LockIllustration = () => (
   <svg viewBox="0 0 200 200" className="w-48 h-48 md:w-64 md:h-64" fill="none">
@@ -21,18 +26,18 @@ const LockIllustration = () => (
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
-  const [form, setForm] = useState({ username: '', password: '' });
+  const [form, setForm] = useState({ email: DEMO_CREDENTIALS.username, password: DEMO_CREDENTIALS.password });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Demo authentication - accept any credentials
-    if (!form.username || !form.password) {
+    // Demo authentication - accept demo credentials or any non-empty input
+    if (!form.email || !form.password) {
       setErrorMessage('Please fill in both fields');
       return;
     }
@@ -43,10 +48,29 @@ export default function Login() {
     // Simulate API delay
     setTimeout(() => {
       setIsSubmitting(false);
-      // Demo-only client session. Real auth must be validated server-side.
-      setSession({ username: form.username });
-      window.location.href = '/dashboard';
-    }, 1000);
+      // Store session and redirect to dashboard
+      setSession({ 
+        username: form.email.split('@')[0],
+        email: form.email,
+        plan: 'starter'
+      });
+      navigate('/dashboard');
+    }, 800);
+  };
+
+  const handleDemoLogin = () => {
+    setIsSubmitting(true);
+    setErrorMessage('');
+    
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSession({ 
+        username: 'demo',
+        email: DEMO_CREDENTIALS.username,
+        plan: 'pro'
+      });
+      navigate('/dashboard');
+    }, 600);
   };
 
   return (
@@ -72,30 +96,26 @@ export default function Login() {
               <span className="text-white font-extrabold text-xl tracking-wide" style={{ fontFamily: '"Roboto Slab", serif' }}>TikyTop</span>
             </Link>
 
-            <h1 className="text-4xl md:text-5xl font-black text-white tracking-widest mb-10 uppercase">Login</h1>
+            <h1 className="text-4xl md:text-5xl font-black text-white tracking-widest mb-4 uppercase">Welcome Back</h1>
+            <p className="text-white/70 text-base font-medium mb-10">Sign in to access your dashboard and track your growth.</p>
 
-            <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
+<form className="flex flex-col gap-5" onSubmit={handleSubmit}>
               <div>
                 {errorMessage && (
-                <div className="mb-2 p-3 bg-red-100 border border-red-200 rounded-lg text-red-700">
+                <div className="mb-2 p-3 bg-red-100/90 border border-red-200 rounded-xl text-red-700 text-sm font-medium">
                   {errorMessage}
                 </div>
-              )}
-              {successMessage && (
-                <div className="mb-2 p-3 bg-green-100 border border-green-200 rounded-lg text-green-700">
-                  {successMessage}
-                </div>
-              )}
-              <label className="block text-white/70 text-xs font-bold tracking-[0.2em] uppercase mb-2">User Name</label>
-                <input
-                  type="text"
-                  name="username"
-                  value={form.username}
-                  onChange={handleChange}
-                  autoComplete="username"
-                  placeholder="Enter your username"
-                  className="w-full bg-white/20 backdrop-blur-sm border border-white/30 text-white placeholder-white/40 rounded-full px-6 py-3.5 text-[15px] font-medium outline-none focus:border-white focus:bg-white/30 transition-all"
-                />
+                )}
+                <label className="block text-white/70 text-xs font-bold tracking-[0.2em] uppercase mb-2">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    autoComplete="email"
+                    placeholder="Enter your email"
+                    className="w-full bg-white/20 backdrop-blur-sm border border-white/30 text-white placeholder-white/40 rounded-full px-6 py-3.5 text-[15px] font-medium outline-none focus:border-white focus:bg-white/30 transition-all"
+                  />
               </div>
 
               <div>
@@ -127,32 +147,41 @@ export default function Login() {
                 </div>
               </div>
 
-                {errorMessage && (
-                 <div className="mb-2 p-3 bg-red-100 border border-red-200 rounded-lg text-red-700">
-                   {errorMessage}
-                 </div>
-               )}
-               {successMessage && (
-                 <div className="mb-2 p-3 bg-green-100 border border-green-200 rounded-lg text-green-700">
-                   {successMessage}
-                 </div>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={`w-full py-4 bg-white text-[#020A1B] font-black text-[15px] rounded-full hover:bg-[#FF00C8] hover:text-white transition-all shadow-lg hover:scale-[1.02] active:scale-[0.98] uppercase tracking-widest mt-2 ${
+                  isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
+              >
+                {isSubmitting ? (
+                  <div className="flex items-center justify-center gap-2">
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    Signing in...
+                  </div>
+                ) : (
+                  'Sign In'
                 )}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={`w-full py-4 bg-white text-[#020A1B] font-black text-[15px] rounded-full hover:bg-[#FF00C8] hover:text-white transition-all shadow-lg hover:scale-[1.02] active:scale-[0.98] uppercase tracking-widest mt-2 ${
-                    isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
-                  }`}
-                >
-                      {isSubmitting ? (
-                        <div className="flex items-center justify-center gap-2">
-                          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                          Signing in...
-                        </div>
-                      ) : (
-                        'Sign In'
-                      )}
-                </button>
+              </button>
+
+              <div className="relative py-2">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-white/20"></div>
+                </div>
+                <div className="relative flex justify-center text-xs">
+                  <span className="bg-transparent px-4 text-white/40 uppercase tracking-widest">or</span>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={handleDemoLogin}
+                disabled={isSubmitting}
+                className="w-full py-4 bg-gradient-to-r from-[#00F5D4] to-[#A6FF00] text-[#020A1B] font-black text-[15px] rounded-full hover:shadow-xl hover:shadow-green-400/25 transition-all hover:scale-[1.02] active:scale-[0.98] uppercase tracking-widest flex items-center justify-center gap-2"
+              >
+                <span>🚀</span>
+                <span>Try Demo Account</span>
+              </button>
             </form>
 
             <p className="text-center text-white/60 text-sm font-medium mt-8">
