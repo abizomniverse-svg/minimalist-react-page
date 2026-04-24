@@ -3,37 +3,46 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const TRENDING_PACKAGES = {
-  sectionTitle: "Premium Growth Packages",
-  sectionSubtitle: "⚡ Limited-time offer: All packages include 25% bonus followers FREE! Don't miss out - this exclusive deal ends soon. Join 50,000+ creators who've transformed their social media presence.",
-  buttonText: "🔥 CLAIM BONUS NOW",
-  urgencyNote: "⏰ Only 47 packages left at this price!",
+  sectionTitle: "Most Popular Packages",
+  sectionSubtitle: "Join 2.4 million orders delivered. Pick your starting point.",
+  buttonText: "Get Started",
+  features: "Instant delivery • 30-day refill guarantee",
   packages: [
     {
       id: "tiktok-followers",
       platform: "TikTok",
-      service: "Premium Followers",
-      price: "$8.99",
-      description: "Elite TikTok growth package featuring premium-quality followers with guaranteed engagement boost and algorithm optimization.",
+      service: "Followers",
+      price: "$5.60",
+      originalPrice: "$8.99",
+      description: "Real followers who engage with your content. No bots, no drops.",
       type: "tiktok",
-      features: ["Premium Quality", "Algorithmic Boost", "Engagement Guarantee", "Priority Support", "Growth Analytics"]
+      badge: "MOST POPULAR",
+      features: ["Real followers", "No password needed", "Delivery in minutes", "30-day refill", "Track in dashboard"],
+      orders: "847K+ orders"
     },
     {
       id: "instagram-likes",
-      platform: "Instagram",
-      service: "Premium Likes",
-      price: "$4.99",
-      description: "Instagram premium engagement package with high-value likes from active, niche-relevant accounts for maximum impact.",
+      platform: "Instagram", 
+      service: "Likes",
+      price: "$2.99",
+      originalPrice: "$4.99",
+      description: "High-quality likes from active accounts. Boosts your reach instantly.",
       type: "instagram",
-      features: ["High-Value Engagement", "Niche Targeting", "Algorithm Friendly", "Instant Delivery", "24/7 Premium Support"]
+      badge: "BEST VALUE",
+      features: ["Active accounts", "No password needed", "Instant start", "Refill included", "See likes grow"],
+      orders: "623K+ orders"
     },
     {
       id: "youtube-subscribers",
       platform: "YouTube",
-      service: "Premium Subscribers",
-      price: "$24.99",
-      description: "YouTube premium growth solution featuring genuine subscribers who engage with your content and boost channel authority.",
+      service: "Subscribers", 
+      price: "$13.90",
+      originalPrice: "$24.99",
+      description: "Genuine subscribers who actually watch and engage with your videos.",
       type: "youtube",
-      features: ["Genuine Subscribers", "Retention Guaranteed", "Channel Authority Boost", "Monetization Ready", "Detailed Analytics"]
+      badge: "FASTEST GROWTH",
+      features: ["Real subscribers", "Watch your videos", "Monetization ready", "Detailed analytics", "Priority support"],
+      orders: "412K+ orders"
     }
   ]
 };

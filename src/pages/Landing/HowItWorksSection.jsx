@@ -2,34 +2,33 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const HOW_IT_WORKS_CONTENT = {
-  title: "How to Place an Order in Simple Steps",
+  title: "Your Growth Journey in 3 Simple Steps",
+  subtitle: "Thousands of creators transformed their following in days — no tech skills needed.",
   steps: [
     {
-      number: "1",
-      title: "Select Your Service",
-      description: "Choose the specific social media growth service you need from our comprehensive offerings."
+      number: "01",
+      icon: "🎯",
+      title: "Choose Your Package",
+      description: "Pick from our proven packages tailored to your goals. Simple as clicking a button.",
+      socialProof: "47% choose the Starter Package"
     },
     {
-      number: "2",
-      title: "Enter Your Details",
-      description: "Provide your profile URL or username (no password required) and select the quantity you want."
+      number: "02", 
+      icon: "🔗",
+      title: "Drop Your Link",
+      description: "Paste your profile URL — that's it. No login, no password, no hassle.",
+      socialProof: "Takes just 8 seconds average"
     },
     {
-      number: "3",
-      title: "Secure Checkout",
-      description: "Complete your purchase through our secure payment gateway. Your order starts processing immediately."
-    },
-    {
-      number: "4",
-      title: "Sit Back & Relax",
-      description: "We handle everything else! Watch your social media presence grow with authentic engagement."
-    },
-    {
-      number: "5",
-      title: "Enjoy Results",
-      description: "See increased engagement, followers, and visibility. Refill and support available if needed."
+      number: "03",
+      icon: "⚡",
+      title: "Watch It Grow",
+      description: "Results appear in minutes. Track progress in your personal dashboard.",
+      socialProof: "Average: 2,340 new followers in 72 hours"
     }
-  ]
+  ],
+  cta: "Start Free Trial",
+  guarantee: "🛡️ 30-day refill guarantee • Cancel anytime"
 };
 
 const HowItWorksSection = () => {

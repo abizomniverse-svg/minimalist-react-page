@@ -1,38 +1,40 @@
 import React from 'react';
 
 const ORDER_STEPS_CONTENT = {
-  title: "How Does TikyTop Work?",
-  subtitle: "Our goal is to make it quick and easy to boost your social media presence using high-quality promotional services. Here's how it works:",
+  title: "Get More Followers in 3 Clicks",
+  subtitle: "No forms to fill. No accounts to link. Just your profile URL.",
   steps: [
     {
-      number: "1",
-      title: "Select Social Network",
-      description: "Choose the platform you want to grow on — Instagram, YouTube, TikTok, and more — by clicking the relevant icon at the top of the page.",
-      iconType: "select",
-      color: "#FF00C8"
+      number: "01",
+      icon: "📱",
+      title: "Pick Your Platform",
+      description: "Choose where you want to grow. All major platforms supported.",
+      socialProof: "TikTok • Instagram • YouTube • Facebook"
     },
     {
-      number: "2",
-      title: "Choose a Service Package",
-      description: "Select the specific service you need, such as followers, likes, views, or comments, and choose the quantity that aligns with your goals.",
-      iconType: "package",
-      color: "#00F5D4"
+      number: "02",
+      icon: "🎯",
+      title: "Select Package",
+      description: "Pick followers, likes, views, or comments. Choose your quantity.",
+      socialProof: "Starting at just $2"
     },
     {
-      number: "3",
-      title: "Enter Your Details",
-      description: "Please provide the URL to your profile or post, or enter your username (no password required).",
-      iconType: "details",
-      color: "#A6FF00"
+      number: "03",
+      icon: "🔗",
+      title: "Paste Your Link",
+      description: "Drop your profile URL. We'll handle the rest.",
+      socialProof: "No password needed"
     },
     {
-      number: "4",
-      title: "Complete Your Purchase",
-      description: "Use the secure checkout to place your order. Delivery starts automatically once payment is confirmed.",
-      iconType: "purchase",
-      color: "#FF00C8"
+      number: "04",
+      icon: "📈",
+      title: "Watch It Grow",
+      description: "Track results in your dashboard. Real followers, real engagement.",
+      socialProof: "Results in minutes"
     }
-  ]
+  ],
+  cta: "Start Free Trial",
+  stats: { users: "50,000+", orders: "2.4M+", rating: "4.9/5" }
 };
 
 const OrderStepsSection = () => {

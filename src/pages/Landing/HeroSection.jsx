@@ -1,21 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { THEME, GLOBAL_CONFIG } from '../../utils/constants';
 
 const HeroSection = () => {
-  const [selectedPlatform, setSelectedPlatform] = useState('');
+  const [selectedPlatform, setSelectedPlatform] = useState('tiktok');
   const [profileUrl, setProfileUrl] = useState('');
-  const [selectedService, setSelectedService] = useState('');
-  const [quantity, setQuantity] = useState(100);
+  const [selectedService, setSelectedService] = useState('tiktok-followers');
+  const [quantity, setQuantity] = useState(1000);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [timeLeft, setTimeLeft] = useState({ hours: 23, minutes: 47, seconds: 12 });
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev.seconds > 0) return { ...prev, seconds: prev.seconds - 1 };
+        if (prev.minutes > 0) return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
+        if (prev.hours > 0) return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
+        return prev;
+      });
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   const content = {
-    title: "#1 Premium TikTok Growth Service - Turn Your Profile into a Powerhouse",
-    subtitle: "⚡ Instant delivery • 🛡️ 30-day guarantee • ⭐ 4.9/5 rating. Join 50,000+ creators who've transformed their social media presence. Limited-time offer: Get 25% extra followers FREE!",
-    primaryCTA: "🚀 Start Growing Now",
-    secondaryCTA: "View Success Stories",
-    urgencyBadge: "⏰ Limited Time: 25% Bonus Ends Soon!",
-    socialProof: "50,000+ creators trust TikyTop • 4.9/5 rating • 99.9% success rate"
+    title: "Turn Your Profile Into A viral Magnet",
+    subtitle: "Join 50,000+ creators who bypassed years of struggle and grew overnight. Real followers. Real engagement. Real results.",
+    primaryCTA: "Start Growing Free",
+    secondaryCTA: "See Results",
+    socialProof: "50,000+ creators • 4.9/5 rating • 99.9% success rate"
   };
 
   const platforms = [

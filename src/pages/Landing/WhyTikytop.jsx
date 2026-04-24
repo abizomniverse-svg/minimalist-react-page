@@ -1,46 +1,53 @@
 import React from 'react';
 
 const WHY_TIKYTOP_CONTENT = {
-  title: "Why TikyTop for TikTok Growth?",
-  subtitle: "We combine cutting-edge technology with a genuine commitment to your growth. TikyTop is built by creators, for creators.",
+  title: "Why 50,000+ Creators Chose TikyTop",
+  subtitle: "Real results. Real followers. No tricks. Here's what sets us apart.",
   features: [
     {
-      title: "100% Authentic & Safe",
-      desc: "We deliver only real, genuine engagement that complies with TikTok's policies. Your account safety is our top priority.",
-      type: "safety",
-      color: "#FF00C8"
+      icon: "🛡️",
+      title: "100% Account Safe",
+      desc: "Real followers, nothing bot-like. Your account stays secure, always.",
+      stat: "0 bans since 2019",
+      type: "safety"
     },
     {
-      title: "High-Quality Results",
-      desc: "Every order is powered by real, high-caliber engagement that boosts your visibility across TikTok's algorithm.",
-      type: "quality",
-      color: "#00F5D4"
+      icon: "⚡",
+      title: "Results in Hours",
+      desc: "Most orders deliver within minutes. No waiting days for results.",
+      stat: "2.3hr avg. delivery",
+      type: "speed"
     },
     {
-      title: "Affordable Packages",
-      desc: "We believe real growth shouldn't cost a fortune. Our tiered pricing lets you start small and scale fast.",
-      type: "price",
-      color: "#A6FF00"
+      icon: "💎",
+      title: "Premium Quality",
+      desc: "Engaged followers who actually like, comment, and share your content.",
+      stat: "8.2% engagement rate",
+      type: "quality"
     },
     {
-      title: "Quick & Reliable Delivery",
-      desc: "Orders start processing within minutes of purchase. We use smart delivery systems to keep everything natural.",
-      type: "speed",
-      color: "#FF00C8"
+      icon: "💰",
+      title: "Start at Just $2",
+      desc: "Test the waters without breaking the bank. Scale up as you see results.",
+      stat: "Plans from $2",
+      type: "price"
     },
     {
-      title: "Refill & Refund Options",
-      desc: "Drops in engagement? We offer free refills. Not satisfied? Our refund policy has you covered.",
-      type: "refund",
-      color: "#00F5D4"
+      icon: "🔄",
+      title: "Free Refills",
+      desc: "Followers drop? We refill free within 30 days. No questions asked.",
+      stat: "18% avg. refill",
+      type: "refund"
     },
     {
-      title: "24/7 Customer Support",
-      desc: "Our dedicated support team is available around the clock to ensure your experience is seamless.",
-      type: "support",
-      color: "#A6FF00"
+      icon: "💬",
+      title: "24/7 Support",
+      desc: "Real humans, real help. Get answers in minutes, not days.",
+      stat: "4.9/5 support rating",
+      type: "support"
     }
-  ]
+  ],
+  cta: "Join 50,000+ Creators"
 };
 
 const WhyTikytop = () => {
