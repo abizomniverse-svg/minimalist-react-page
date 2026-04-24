@@ -3,36 +3,36 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const TRENDING_PACKAGES = {
-  sectionTitle: "Trending Growth Packages",
-  sectionSubtitle: "Boost your social presence with our most popular high-quality packages tailored for rapid growth.",
-  buttonText: "BUY NOW",
+  sectionTitle: "Premium Growth Packages",
+  sectionSubtitle: "Experience our exclusive, high-impact growth solutions designed for creators who demand excellence. Each package delivers measurable results with our premium service guarantee.",
+  buttonText: "GET PREMIUM ACCESS",
   packages: [
     {
       id: "tiktok-followers",
       platform: "TikTok",
-      service: "Followers",
-      price: "$5.60",
-      description: "Our TikTok Followers offers a reliable and effective solution for those looking for quick and sustainable growth.",
+      service: "Premium Followers",
+      price: "$8.99",
+      description: "Elite TikTok growth package featuring premium-quality followers with guaranteed engagement boost and algorithm optimization.",
       type: "tiktok",
-      features: ["Real Followers", "Instant Delivery", "Refill Guarantee"]
+      features: ["Premium Quality", "Algorithmic Boost", "Engagement Guarantee", "Priority Support", "Growth Analytics"]
     },
     {
       id: "instagram-likes",
       platform: "Instagram",
-      service: "Likes",
-      price: "$1.99",
-      description: "Skyrocket your visibility with high-quality likes that boost your engagement and credibility instantly.",
+      service: "Premium Likes",
+      price: "$4.99",
+      description: "Instagram premium engagement package with high-value likes from active, niche-relevant accounts for maximum impact.",
       type: "instagram",
-      features: ["High Quality", "Safe & Secure", "24/7 Support"]
+      features: ["High-Value Engagement", "Niche Targeting", "Algorithm Friendly", "Instant Delivery", "24/7 Premium Support"]
     },
     {
       id: "youtube-subscribers",
       platform: "YouTube",
-      service: "Subscribers",
-      price: "$13.90",
-      description: "With our YouTube Subscribers, you will get a quick and effective solution to reach a larger audience.",
+      service: "Premium Subscribers",
+      price: "$24.99",
+      description: "YouTube premium growth solution featuring genuine subscribers who engage with your content and boost channel authority.",
       type: "youtube",
-      features: ["Active Users", "No Drop Guarantee", "Natural Growth"]
+      features: ["Genuine Subscribers", "Retention Guaranteed", "Channel Authority Boost", "Monetization Ready", "Detailed Analytics"]
     }
   ]
 };
@@ -82,7 +82,13 @@ const TrendingPackage = () => {
     };
 
     return (
-        <section className="py-24 md:py-32 px-5 bg-white text-center">
+        <section className="py-24 md:py-32 px-5 text-center" 
+                 style={{
+                   background: 'linear-gradient(135deg, rgba(255,255,255,0.65) 0%, rgba(255,0,200,0.25) 50%, rgba(2,10,27,0.1) 100%)',
+                   minHeight: '100vh',
+                   position: 'relative',
+                   overflow: 'hidden'
+                 }}>
             <div className="mb-16 max-w-[800px] mx-auto">
                 <motion.h2 
                     className="text-4xl md:text-5xl font-extrabold text-[#020A1B] mb-6 tracking-tight"
@@ -103,7 +109,7 @@ const TrendingPackage = () => {
                 </motion.p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
                 {packages.map((pkg, index) => {
                     const brandColor = pkg.type === 'instagram' ? '#00F5D4' : pkg.type === 'tiktok' ? '#FF00C8' : '#A6FF00';
                     const iconBg = pkg.type === 'instagram' ? 'linear-gradient(45deg, #00F5D4, #405DE6)' : pkg.type === 'tiktok' ? 'linear-gradient(45deg, #FF00C8, #7E22CE)' : 'linear-gradient(45deg, #A6FF00, #00F5D4)';
@@ -123,12 +129,12 @@ const TrendingPackage = () => {
                                 {getPlatformIcon(pkg.type)}
                             </div>
                             
-                            <span className="text-sm font-bold uppercase tracking-[0.2em] mb-3" style={{ color: brandColor }}>
+                            <span className="text-base font-black uppercase tracking-[0.25em] mb-4 px-4 py-2 rounded-full bg-gradient-to-r from-[#FF00C8]/10 to-[#00F5D4]/10 border border-[#FF00C8]/20" style={{ color: brandColor }}>
                                 {pkg.platform} {pkg.service}
                             </span>
                             <h3 className="text-3xl font-extrabold mb-4 text-[#020A1B]">From {pkg.price}</h3>
                             
-                            <p className="text-[#75819A] leading-relaxed mb-8 flex-grow font-medium">{pkg.description}</p>
+                            <p className="text-[#75819A] leading-relaxed mb-8 flex-grow font-medium text-lg">{pkg.description}</p>
                             
                             <ul className="w-full text-left mb-10 flex flex-col gap-3">
                                 {pkg.features.map((feature, fIndex) => (
