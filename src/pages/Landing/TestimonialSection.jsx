@@ -166,7 +166,7 @@ export default function TestimonialSection() {
 
       {/* Infinite Scroll */}
       <div
-        className="relative"
+        className="relative testimonials-track"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
