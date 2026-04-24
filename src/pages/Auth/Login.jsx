@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { setSession } from '../../utils/auth';
 
 const LockIllustration = () => (
@@ -25,6 +25,8 @@ export default function Login() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from || '/dashboard';
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -49,7 +51,7 @@ export default function Login() {
         email: form.email,
         plan: 'starter'
       });
-      navigate('/dashboard');
+      navigate(from, { replace: true });
     }, 800);
   };
 
@@ -64,7 +66,7 @@ export default function Login() {
         email: 'demo@example.com',
         plan: 'pro'
       });
-      navigate('/dashboard');
+      navigate(from, { replace: true });
     }, 600);
   };
 

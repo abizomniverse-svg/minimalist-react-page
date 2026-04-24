@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { isAuthenticated } from '../../utils/auth';
 import { THEME, GLOBAL_CONFIG } from '../../utils/constants';
 
 const PLATFORMS = [
@@ -37,42 +38,11 @@ const SERVICES = {
 const QUANTITIES = [100, 500, 1000, 2500, 5000, 10000];
 
 const HeroSection = () => {
+  const navigate = useNavigate();
   const [selectedPlatform, setSelectedPlatform] = useState('tiktok');
   const [profileUrl, setProfileUrl] = useState('');
   const [selectedService, setSelectedService] = useState('followers');
-  const [quantity, setQuantity] = useState(1000);
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [timeLeft, setTimeLeft] = useState({ hours: 23, minutes: 47, seconds: 12 });
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev.seconds > 0) return { ...prev, seconds: prev.seconds - 1 };
-        if (prev.minutes > 0) return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
-        if (prev.hours > 0) return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
-        return prev;
-      });
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const currentServices = SERVICES[selectedPlatform] || [];
-  const currentService = currentServices.find(s => s.id === selectedService) || currentServices[0];
-  const totalPrice = currentService ? (currentService.price * quantity).toFixed(2) : '0.00';
-
-  const handleOrder = async () => {
-    if (!selectedPlatform || !profileUrl || !selectedService) return;
-    setIsProcessing(true);
-    setTimeout(() => {
-      setIsProcessing(false);
-      setShowSuccess(true);
-      setTimeout(() => {
-        setShowSuccess(false);
-        setProfileUrl('');
-      }, 3000);
-    }, 2000);
-  };
+const [quantity, setQuantity] = useState(1000);
 
   const formatNumber = (num) => {
     if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
@@ -140,38 +110,29 @@ const HeroSection = () => {
 
         {/* Right - Order Card */}
         <div className="relative">
-          {/* Gradient glow */}
-          <div className="absolute -inset-4 bg-gradient-to-r from-[#FF00C8]/20 via-[#00F5D4]/20 to-[#A6FF00]/20 rounded-3xl blur-2xl"></div>
-          
-          <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden">
+          {/* Transparent glass card */}
+          <div className="relative bg-white/70 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/50 overflow-hidden">
             {/* Header */}
-            <div className="bg-gradient-to-r from-[#020A1B] to-[#1a1a2e] px-6 py-4">
-              <div className="flex items-center justify-between">
-                <h3 className="text-white font-bold text-lg">⚡ Quick Order</h3>
-                <div className="flex items-center gap-2 text-white/80 text-sm">
-                  <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
-                  Sale ends in {timeLeft.hours}h {timeLeft.minutes}m
-                </div>
-              </div>
+            <div className="bg-gradient-to-r from-[#020A1B]/80 to-[#1a1a2e]/80 px-6 py-3">
+              <h3 className="text-white font-bold">⚡ Quick Order</h3>
             </div>
 
-            <div className="p-6 space-y-5">
+            <div className="p-5 space-y-4">
               {/* Platform */}
               <div>
-                <label className="block text-sm font-bold text-[#020A1B] mb-3">Select Platform</label>
-                <div className="grid grid-cols-4 gap-2">
+                <label className="block text-xs font-semibold text-[#64748B] mb-2">Platform</label>
+                <div className="flex gap-2">
                   {PLATFORMS.map((platform) => (
                     <button
                       key={platform.id}
                       onClick={() => { setSelectedPlatform(platform.id); setSelectedService(SERVICES[platform.id][0].id); }}
-                      className={`py-3 rounded-xl border-2 transition-all flex flex-col items-center gap-1 ${
+                      className={`flex-1 py-2.5 rounded-xl border-2 text-sm font-semibold transition-all ${
                         selectedPlatform === platform.id
-                          ? 'border-[#FF00C8] bg-[#FF00C8]/5'
-                          : 'border-gray-100 hover:border-gray-300'
+                          ? 'border-[#FF00C8] bg-[#FF00C8]/10 text-[#FF00C8]'
+                          : 'border-gray-200 text-[#64748B] hover:border-gray-300'
                       }`}
                     >
-                      <span className="text-xl">{platform.icon}</span>
-                      <span className="text-xs font-medium">{platform.name}</span>
+                      {platform.icon} {platform.name}
                     </button>
                   ))}
                 </div>
@@ -179,103 +140,67 @@ const HeroSection = () => {
 
               {/* Service */}
               <div>
-                <label className="block text-sm font-bold text-[#020A1B] mb-3">Select Service</label>
-                <div className="grid grid-cols-3 gap-2">
-                  {currentServices.slice(0, 6).map((service) => (
+                <label className="block text-xs font-semibold text-[#64748B] mb-2">Service</label>
+                <div className="flex gap-2">
+                  {currentServices.slice(0, 4).map((service) => (
                     <button
                       key={service.id}
                       onClick={() => setSelectedService(service.id)}
-                      className={`py-2 px-3 rounded-xl border-2 transition-all flex flex-col items-center ${
+                      className={`flex-1 py-2 rounded-lg text-xs font-semibold transition-all ${
                         selectedService === service.id
-                          ? 'border-[#FF00C8] bg-[#FF00C8]/5'
-                          : 'border-gray-100 hover:border-gray-300'
+                          ? 'bg-[#FF00C8] text-white'
+                          : 'bg-gray-100 text-[#64748B] hover:bg-gray-200'
                       }`}
                     >
-                      <span className="text-lg mb-1">{service.icon}</span>
-                      <span className="text-xs font-bold text-[#020A1B]">{service.name}</span>
-                      <span className="text-xs text-[#FF00C8]">${service.price}</span>
+                      {service.name}
                     </button>
                   ))}
                 </div>
               </div>
 
               {/* URL */}
-              <div>
-                <label className="block text-sm font-bold text-[#020A1B] mb-3">Profile URL</label>
-                <input
-                  type="url"
-                  value={profileUrl}
-                  onChange={(e) => setProfileUrl(e.target.value)}
-                  placeholder={`https://${selectedPlatform}.com/@yourusername`}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#FF00C8] outline-none text-sm"
-                />
-              </div>
+              <input
+                type="url"
+                value={profileUrl}
+                onChange={(e) => setProfileUrl(e.target.value)}
+                placeholder={`@username`}
+                className="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-white/80 focus:border-[#FF00C8] outline-none text-sm"
+              />
 
               {/* Quantity */}
-              <div>
-                <label className="block text-sm font-bold text-[#020A1B] mb-3">Quantity</label>
-                <div className="grid grid-cols-6 gap-1 mb-3">
-                  {QUANTITIES.map((q) => (
-                    <button
-                      key={q}
-                      onClick={() => setQuantity(q)}
-                      className={`py-2 rounded-lg text-xs font-bold transition-all ${
-                        quantity === q
-                          ? 'bg-[#FF00C8] text-white'
-                          : 'bg-gray-100 text-[#64748B] hover:bg-gray-200'
-                      }`}
-                    >
-                      {formatNumber(q)}
-                    </button>
-                  ))}
-                </div>
-                <input
-                  type="number"
-                  value={quantity}
-                  onChange={(e) => setQuantity(parseInt(e.target.value) || 10)}
-                  min="10"
-                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#FF00C8] outline-none text-center font-bold"
-                />
+              <div className="flex gap-2">
+                {[500, 1000, 2500, 5000].map((q) => (
+                  <button
+                    key={q}
+                    onClick={() => setQuantity(q)}
+                    className={`flex-1 py-2 rounded-lg text-xs font-semibold transition-all ${
+                      quantity === q
+                        ? 'bg-[#020A1B] text-white'
+                        : 'bg-gray-100 text-[#64748B] hover:bg-gray-200'
+                    }`}
+                  >
+                    {q >= 1000 ? (q/1000) + 'K' : q}
+                  </button>
+                ))}
               </div>
 
-              {/* Price Display */}
-              <div className="bg-gradient-to-r from-[#FF00C8]/10 to-[#00F5D4]/10 rounded-2xl p-4">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-sm text-[#64748B]">Total</div>
-                    <div className="text-xs text-[#64748B]">Instant delivery • Refill guarantee</div>
-                  </div>
-                  <div className="text-3xl font-black text-[#020A1B]">${totalPrice}</div>
+              {/* Price & Submit */}
+              <div className="flex items-center gap-3">
+                <div className="flex-1 bg-gradient-to-r from-[#FF00C8]/10 to-[#00F5D4]/10 rounded-xl p-3">
+                  <div className="text-xs text-[#64748B]">Total</div>
+                  <div className="text-xl font-black text-[#020A1B]">${totalPrice}</div>
                 </div>
-              </div>
-
-              {/* Submit Button */}
-              <button
-                onClick={handleOrder}
-                disabled={!profileUrl || isProcessing}
-                className={`w-full py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2 ${
-                  profileUrl && !isProcessing
-                    ? 'bg-gradient-to-r from-[#FF00C8] to-[#D600A7] text-white hover:shadow-xl hover:shadow-pink-500/25'
-                    : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                }`}
-              >
-                {isProcessing ? (
-                  <>
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    Processing...
-                  </>
-                ) : showSuccess ? (
-                  <>✅ Order Placed!</>
-                ) : (
-                  <>🚀 Order Now - ${totalPrice}</>
-                )}
-              </button>
-
-              {/* Trust badges */}
-              <div className="flex items-center justify-center gap-4 text-xs text-[#64748B]">
-                <span className="flex items-center gap-1">🔒 Secure</span>
-                <span className="flex items-center gap-1">⚡ Instant</span>
-                <span className="flex items-center gap-1">🔄 Refill</span>
+                <button
+                  onClick={handleOrder}
+                  disabled={!profileUrl}
+                  className={`flex-1 py-3 rounded-xl font-bold text-sm transition-all ${
+                    profileUrl
+                      ? 'bg-gradient-to-r from-[#FF00C8] to-[#D600A7] text-white'
+                      : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                  }`}
+                >
+                  Order Now
+                </button>
               </div>
             </div>
           </div>
