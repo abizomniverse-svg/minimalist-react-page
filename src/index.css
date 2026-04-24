@@ -11,6 +11,10 @@
     scroll-behavior: smooth;
   }
   
+  a, button, [role="button"], input, select {
+    cursor: pointer;
+  }
+  
   body {
     @apply bg-white text-[#020A1B] font-main antialiased;
   }
@@ -21,7 +25,18 @@
 }
 
 @layer utilities {
-  .section-padding {
-    @apply py-16 md:py-20 px-5 md:px-10;
+  .click-effect {
+    animation: clickRipple 0.4s ease-out;
+  }
+  
+  @keyframes clickRipple {
+    0% {
+      transform: scale(0.5);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
   }
 }
