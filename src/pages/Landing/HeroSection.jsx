@@ -42,7 +42,20 @@ const HeroSection = () => {
   const [selectedPlatform, setSelectedPlatform] = useState('tiktok');
   const [profileUrl, setProfileUrl] = useState('');
   const [selectedService, setSelectedService] = useState('followers');
-const [quantity, setQuantity] = useState(1000);
+  const [quantity, setQuantity] = useState(1000);
+
+  const currentServices = SERVICES[selectedPlatform] || [];
+  const activeService = currentServices.find(s => s.id === selectedService) || currentServices[0];
+  const totalPrice = activeService ? ((activeService.price * quantity) / 1000).toFixed(2) : '0.00';
+
+  const handleOrder = () => {
+    if (!profileUrl) return;
+    if (isAuthenticated()) {
+      navigate('/order', { state: { selectedPlatform, selectedService, quantity, profileUrl } });
+    } else {
+      navigate('/login');
+    }
+  };
 
   const formatNumber = (num) => {
     if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
