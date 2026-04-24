@@ -46,19 +46,6 @@ const TRENDING_PACKAGES = {
       icon: "▶️",
       features: ["Real Subs", "Monetization Ready", "Analytics", "Priority Support"],
       orders: "412K+"
-    },
-    {
-      id: "facebook-followers",
-      platform: "Facebook",
-      service: "Page Likes",
-      price: "$4.50",
-      originalPrice: "$7.99",
-      description: "Grow your page with real followers.",
-      type: "facebook",
-      badge: "NEW",
-      icon: "📘",
-      features: ["Real Followers", "Page Growth", "Engagement", "Safe & Secure"],
-      orders: "156K+"
     }
   ]
 };
@@ -71,7 +58,6 @@ const TrendingPackage = () => {
       case 'tiktok': return 'linear-gradient(135deg, #FF00C8 0%, #7E22CE 100%)';
       case 'instagram': return 'linear-gradient(135deg, #00F5D4 0%, #405DE6 100%)';
       case 'youtube': return 'linear-gradient(135deg, #A6FF00 0%, #22C55E 100%)';
-      case 'facebook': return 'linear-gradient(135deg, #FF6B35 0%, #EF4444 100%)';
       default: return 'linear-gradient(135deg, #FF00C8 0%, #00F5D4 100%)';
     }
   };

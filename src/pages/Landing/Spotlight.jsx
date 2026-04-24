@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const SPOTLIGHT_CONTENT = {
     badge: "Elite Growth Platform",
     title: "Ready to Dominate Social Media?",
-    subtitle: "Transform your social media presence from ordinary to extraordinary with TikyTop's premium growth solutions. Our AI-powered platform delivers guaranteed results, helping creators, influencers, and brands achieve viral success. Join the elite circle of social media powerhouses who've chosen TikyTop for unparalleled growth across TikTok, Instagram, YouTube, and Facebook. Experience the difference that premium quality and cutting-edge technology makes.",
+    subtitle: "Transform your social media presence from ordinary to extraordinary with TikyTop's premium growth solutions. Our AI-powered platform delivers guaranteed results, helping creators, influencers, and brands achieve viral success. Join the elite circle of social media powerhouses who've chosen TikyTop for unparalleled growth across TikTok, Instagram, and YouTube. Experience the difference that premium quality and cutting-edge technology makes.",
     buttonText: "Join Elite Growth",
     stats: [
         { number: "10M+", label: "Engagements Delivered" },

@@ -6,8 +6,7 @@ import { getSession, clearSession } from '../utils/auth';
 const PLATFORMS = [
   { id: 'tiktok', name: 'TikTok', icon: '🎵', color: '#FF00C8', bg: 'from-pink-500 to-purple-600' },
   { id: 'instagram', name: 'Instagram', icon: '📸', color: '#00F5D4', bg: 'from-cyan-400 to-blue-500' },
-  { id: 'youtube', name: 'YouTube', icon: '▶️', color: '#A6FF00', bg: 'from-lime-400 to-green-500' },
-  { id: 'facebook', name: 'Facebook', icon: '📘', color: '#FF6B35', bg: 'from-orange-500 to-red-500' }
+  { id: 'youtube', name: 'YouTube', icon: '▶️', color: '#A6FF00', bg: 'from-lime-400 to-green-500' }
 ];
 
 const SERVICES = {
@@ -33,13 +32,6 @@ const SERVICES = {
     { id: 'likes', name: 'Likes', price: 0.25, icon: '👍', desc: 'Boost likes' },
     { id: 'comments', name: 'Comments', price: 3.50, icon: '💬', desc: 'Get comments' },
     { id: 'shares', name: 'Shares', price: 4.20, icon: '🔄', desc: 'Share content' }
-  ],
-  facebook: [
-    { id: 'pagelikes', name: 'Page Likes', price: 2.80, icon: '👍', desc: 'Page likes' },
-    { id: 'followers', name: 'Followers', price: 4.50, icon: '👥', desc: 'Get followers' },
-    { id: 'postlikes', name: 'Post Likes', price: 0.015, icon: '❤️', desc: 'Post likes' },
-    { id: 'views', name: 'Views', price: 0.08, icon: '👁️', desc: 'More views' },
-    { id: 'shares', name: 'Shares', price: 3.20, icon: '🔄', desc: 'Share content' }
   ]
 };
 
@@ -47,8 +39,7 @@ const INITIAL_ORDERS = [
   { id: '#TK-7821', service: 'TikTok Followers', platform: 'tiktok', amount: 1000, delivered: 847, status: 'completed', startTime: Date.now() - 86400000, cost: '$5.60' },
   { id: '#IG-3421', service: 'Instagram Likes', platform: 'instagram', amount: 500, delivered: 500, status: 'completed', startTime: Date.now() - 172800000, cost: '$2.99' },
   { id: '#YT-1203', service: 'YouTube Subscribers', platform: 'youtube', amount: 100, delivered: 45, status: 'processing', startTime: Date.now() - 3600000, cost: '$13.90' },
-  { id: '#TK-9954', service: 'TikTok Likes', platform: 'tiktok', amount: 2000, delivered: 0, status: 'pending', startTime: Date.now(), cost: '$0.16' },
-  { id: '#FB-7782', service: 'Facebook Page Likes', platform: 'facebook', amount: 500, delivered: 500, status: 'completed', startTime: Date.now() - 259200000, cost: '$4.50' }
+  { id: '#TK-9954', service: 'TikTok Likes', platform: 'tiktok', amount: 2000, delivered: 0, status: 'pending', startTime: Date.now(), cost: '$0.16' }
 ];
 
 const SIDEBAR = [

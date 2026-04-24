@@ -7,7 +7,7 @@ const FAQ_CONTENT = {
   faqs: [
     {
       question: "What service does TikyTop provide?",
-      answer: "We provide comprehensive growth solutions for TikTok, Instagram, YouTube, and Facebook. Our services include high-quality followers, likes, views, and targeted engagement to boost your social presence naturally."
+      answer: "We provide comprehensive growth solutions for TikTok, Instagram, and YouTube. Our services include high-quality followers, likes, views, and targeted engagement to boost your social presence naturally."
     },
     {
       question: "When does my order start?",
@@ -19,7 +19,7 @@ const FAQ_CONTENT = {
     },
     {
       question: "Which platforms are supported?",
-      answer: "Currently, we specialize in the world's largest social networks: TikTok, Instagram, YouTube, and Facebook. Keep an eye out as we regularly expand our service offerings."
+      answer: "Currently, we specialize in the world's largest social networks: TikTok, Instagram, and YouTube. Keep an eye out as we regularly expand our service offerings."
     },
     {
       question: "Who can benefit from these services?",

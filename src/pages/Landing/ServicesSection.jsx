@@ -45,18 +45,6 @@ const SERVICES_CONTENT = {
         "Buy YouTube Video Likes",
         "Buy YouTube Video Views"
       ]
-    },
-    {
-      name: "Facebook",
-      color: "#FF6B35",
-      icon: "📘",
-      services: [
-        "Buy Facebook Page Likes",
-        "Buy Facebook Post Likes",
-        "Buy Facebook Post Views",
-        "Buy Facebook Video Views",
-        "Buy Facebook Event Responses"
-      ]
     }
   ]
 };

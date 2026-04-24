@@ -9,7 +9,7 @@ const HOW_IT_WORKS_CONTENT = {
       number: "01",
       icon: "📱",
       title: "Select Platform",
-      description: "Choose from TikTok, Instagram, YouTube, or Facebook.",
+      description: "Choose from TikTok, Instagram, or YouTube.",
       stats: "4 Platforms"
     },
     {

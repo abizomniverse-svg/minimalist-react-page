@@ -5,8 +5,7 @@ import { THEME, GLOBAL_CONFIG } from '../../utils/constants';
 const PLATFORMS = [
   { id: 'tiktok', name: 'TikTok', icon: '🎵', color: '#FF00C8' },
   { id: 'instagram', name: 'Instagram', icon: '📸', color: '#00F5D4' },
-  { id: 'youtube', name: 'YouTube', icon: '▶️', color: '#A6FF00' },
-  { id: 'facebook', name: 'Facebook', icon: '📘', color: '#FF6B35' }
+  { id: 'youtube', name: 'YouTube', icon: '▶️', color: '#A6FF00' }
 ];
 
 const SERVICES = {
@@ -32,13 +31,6 @@ const SERVICES = {
     { id: 'likes', name: 'Likes', price: 0.25, icon: '👍' },
     { id: 'comments', name: 'Comments', price: 3.50, icon: '💬' },
     { id: 'shares', name: 'Shares', price: 4.20, icon: '🔄' }
-  ],
-  facebook: [
-    { id: 'pagelikes', name: 'Page Likes', price: 2.80, icon: '👍' },
-    { id: 'followers', name: 'Followers', price: 4.50, icon: '👥' },
-    { id: 'postlikes', name: 'Post Likes', price: 0.015, icon: '❤️' },
-    { id: 'views', name: 'Views', price: 0.08, icon: '👁️' },
-    { id: 'shares', name: 'Shares', price: 3.20, icon: '🔄' }
   ]
 };
 

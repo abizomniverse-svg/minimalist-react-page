@@ -51,7 +51,7 @@ const TermsOfService = () => {
               <p className="text-[#64748B] leading-relaxed">
                 TikyTop (#1 Trusted Site to Turn Your TikTok Profile into a Powerful Platform) provides social media 
                 growth services including followers, likes, views, comments, and other engagement metrics for platforms 
-                such as TikTok, Instagram, YouTube, and Facebook.
+                such as TikTok, Instagram, and YouTube.
               </p>
             </motion.div>
 

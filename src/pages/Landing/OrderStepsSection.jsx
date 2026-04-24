@@ -9,7 +9,7 @@ const ORDER_STEPS_CONTENT = {
       icon: "📱",
       title: "Pick Your Platform",
       description: "Choose where you want to grow. All major platforms supported.",
-      socialProof: "TikTok • Instagram • YouTube • Facebook"
+      socialProof: "TikTok • Instagram • YouTube"
     },
     {
       number: "02",

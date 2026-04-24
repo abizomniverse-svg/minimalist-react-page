@@ -59,14 +59,6 @@ const ANALYTICS_DATA = {
       revenue: "$6,183",
       color: "#A6FF00",
       gradient: "linear-gradient(45deg, #FF0000, #A6FF00)"
-    },
-    {
-      name: "Facebook",
-      orders: 138,
-      growth: "+9.5%",
-      revenue: "$1,954",
-      color: "#FF6B35",
-      gradient: "linear-gradient(45deg, #4267B2, #FF6B35)"
     }
   ],
   recentOrders: [
@@ -93,14 +85,6 @@ const ANALYTICS_DATA = {
       status: "Completed",
       date: "2026-04-23",
       revenue: "$13.90"
-    },
-    {
-      id: "#FB-3456",
-      service: "Facebook Page Likes",
-      amount: 1000,
-      status: "Completed",
-      date: "2026-04-23",
-      revenue: "$27.99"
     }
   ]
 };
