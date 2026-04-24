@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { setSession } from '../../utils/auth';
 
 const GrowthIllustration = () => (
   <svg viewBox="0 0 200 200" className="w-48 h-48 md:w-64 md:h-64" fill="none">
@@ -54,8 +55,8 @@ export default function Register() {
     // Simulate API delay
     setTimeout(() => {
       setIsSubmitting(false);
-      // In a real app, we'd store user data and handle actual registration
-      // For demo, we'll just redirect to dashboard
+      // Demo-only client session. Real auth must be validated server-side.
+      setSession({ name: form.name, email: form.email });
       window.location.href = '/dashboard';
     }, 1000);
   };

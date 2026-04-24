@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { setSession } from '../../utils/auth';
 
 const LockIllustration = () => (
   <svg viewBox="0 0 200 200" className="w-48 h-48 md:w-64 md:h-64" fill="none">
@@ -42,8 +43,8 @@ export default function Login() {
     // Simulate API delay
     setTimeout(() => {
       setIsSubmitting(false);
-      // In a real app, we'd store user data in localStorage or context
-      // For demo, we'll just redirect to dashboard
+      // Demo-only client session. Real auth must be validated server-side.
+      setSession({ username: form.username });
       window.location.href = '/dashboard';
     }, 1000);
   };

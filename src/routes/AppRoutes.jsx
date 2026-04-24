@@ -6,6 +6,7 @@ import OrderPage from '../pages/Order/OrderPage';
 import Dashboard from '../pages/Dashboard';
 import PrivacyPolicy from '../pages/Legal/PrivacyPolicy';
 import TermsOfService from '../pages/Legal/TermsOfService';
+import AuthGuard from '../components/AuthGuard';
 
 const AppRoutes = () => {
   return (
@@ -14,9 +15,30 @@ const AppRoutes = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/order/:serviceType" element={<OrderPage />} />
-        <Route path="/order" element={<OrderPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route
+          path="/order/:serviceType"
+          element={
+            <AuthGuard>
+              <OrderPage />
+            </AuthGuard>
+          }
+        />
+        <Route
+          path="/order"
+          element={
+            <AuthGuard>
+              <OrderPage />
+            </AuthGuard>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <AuthGuard>
+              <Dashboard />
+            </AuthGuard>
+          }
+        />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
       </Routes>
