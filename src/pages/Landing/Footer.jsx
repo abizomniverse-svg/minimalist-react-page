@@ -91,7 +91,7 @@ const Footer = () => {
                     <div className="flex flex-col gap-5 lg:col-span-2">
                         <Link to="/" className="flex items-center gap-3 w-fit">
                             <div className="bg-[#FF00C8] text-white w-11 h-11 rounded-2xl flex items-center justify-center shadow-md shadow-pink-100 font-black text-lg">T</div>
-                            <span className="text-2xl font-extrabold text-[#020A1B]" style={{ fontFamily: 'cursive' }}>{logoText}</span>
+                            <span className="text-2xl font-extrabold text-[#020A1B]" style={{ fontFamily: '"Roboto Slab", serif' }}>{logoText}</span>
                         </Link>
                         <p className="text-[#75819A] text-[15px] leading-relaxed font-medium max-w-sm">{description}</p>
                         <div className="flex flex-wrap gap-3 pt-1">

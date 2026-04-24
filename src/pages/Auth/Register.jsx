@@ -44,7 +44,7 @@ export default function Register() {
           <div className="relative z-10">
             <Link to="/" className="flex items-center gap-2 mb-8 w-fit">
               <div className="bg-[#FF00C8] text-white w-9 h-9 rounded-xl flex items-center justify-center font-black text-lg shadow-md">T</div>
-              <span className="text-white font-extrabold text-xl tracking-wide" style={{ fontFamily: 'cursive' }}>TikyTop</span>
+              <span className="text-white font-extrabold text-xl tracking-wide" style={{ fontFamily: '"Roboto Slab", serif' }}>TikyTop</span>
             </Link>
 
             <h1 className="text-4xl md:text-5xl font-black text-white tracking-widest mb-8 uppercase">Register</h1>
@@ -157,7 +157,7 @@ export default function Register() {
             <div className="w-8 h-8 bg-[#FF00C8] rounded-xl flex items-center justify-center shadow-md shadow-pink-100">
               <span className="text-white font-black text-sm">T</span>
             </div>
-            <span className="text-[#020A1B] font-extrabold text-lg" style={{ fontFamily: 'cursive' }}>TikyTop</span>
+            <span className="text-[#020A1B] font-extrabold text-lg" style={{ fontFamily: '"Roboto Slab", serif' }}>TikyTop</span>
           </div>
         </div>
 

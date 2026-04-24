@@ -173,7 +173,7 @@ const Navbar = () => {
             <div className="bg-white/95 backdrop-blur-md rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.08)] px-8 py-3.5 flex items-center justify-between border border-gray-50 relative">
 
                 <a href="/" className="text-2xl font-bold tracking-tight text-[#FF00C8]">
-                    <span style={{ fontFamily: 'cursive' }}>TikyTop</span>
+                    <span style={{ fontFamily: '"Roboto Slab", serif' }}>TikyTop</span>
                 </a>
 
                 <nav className="hidden lg:flex items-center gap-6">
