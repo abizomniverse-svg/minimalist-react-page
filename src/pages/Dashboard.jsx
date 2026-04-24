@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { getSession, clearSession } from '../utils/auth';
 
 const PLATFORMS = [
@@ -53,6 +53,7 @@ const SIDEBAR = [
 
 function Dashboard() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [currentUser, setCurrentUser] = useState({ name: 'Guest', email: 'guest@tikytop.com', avatar: 'https://i.pravatar.cc/150?u=guest' });
   const [activeTab, setActiveTab] = useState('overview');
   const [showOrderModal, setShowOrderModal] = useState(false);
@@ -74,7 +75,21 @@ function Dashboard() {
         avatar: `https://i.pravatar.cc/150?u=${sessionData.username || 'demo'}`
       });
     }
-  }, []);
+  }, [navigate]);
+
+  useEffect(() => {
+    const pendingOrder = location.state?.order;
+    if (pendingOrder) {
+      setOrderForm({
+        platform: pendingOrder.platform || 'tiktok',
+        service: pendingOrder.service || 'followers',
+        url: pendingOrder.profileUrl || pendingOrder.url || '',
+        quantity: pendingOrder.quantity || 1000
+      });
+      setShowOrderModal(true);
+      navigate('.', { replace: true });
+    }
+  }, [location.state]);
 
   useEffect(() => {
     const interval = setInterval(() => {
