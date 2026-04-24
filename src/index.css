@@ -9,11 +9,6 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    cursor: url('/src/assets/icon/cursor.png'), auto;
-  }
-  
-  a, button, [role="button"], input, textarea, select {
-    cursor: url('/src/assets/icon/cursor.png'), pointer;
   }
   
   body {
@@ -25,17 +20,8 @@
   }
 }
 
-/* Click animations */
 @layer utilities {
-  .click-scale {
-    transition: transform 0.15s ease-out;
-  }
-  
-  .click-scale:active {
-    transform: scale(0.95);
-  }
-  
   .section-padding {
-    @apply py-24 md:py-32 px-5 md:px-10;
+    @apply py-16 md:py-20 px-5 md:px-10;
   }
 }
