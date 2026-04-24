@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const HOW_IT_WORKS_CONTENT = {
-  title: "How to Place an Order in Simple Steps?",
+  title: "How to Place an Order in Simple Steps",
   steps: [
     {
       number: "1",

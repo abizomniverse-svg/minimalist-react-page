@@ -8,7 +8,6 @@ import TargetedAudience from './TargetedAudience';
 import WhyTikytop from './WhyTikytop';
 import TestimonialSection from './TestimonialSection';
 import FaqSection from './FaqSection';
-import ServicesSection from './ServicesSection';
 import Footer from './Footer';
 
 const LandingPage = () => {
@@ -21,7 +20,6 @@ const LandingPage = () => {
       <TrendingPackage />
       <WhyTikytop />
       <TargetedAudience />
-      <ServicesSection />
       <FaqSection />
 
       <TestimonialSection />

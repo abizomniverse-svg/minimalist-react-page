@@ -3,8 +3,6 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const SERVICES_CONTENT = {
-  title: "Our Comprehensive Growth Services",
-  subtitle: "Explore our full range of social media growth services designed to elevate your presence across all major platforms.",
   platforms: [
     {
       name: "TikTok",

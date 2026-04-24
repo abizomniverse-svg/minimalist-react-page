@@ -20,15 +20,10 @@ const NAVBAR_CONTENT = {
       isMega: false, 
       items: ["YouTube Views", "YouTube Subscribers", "YouTube Likes", "Shorts Views", "Shorts Likes"] 
     },
-    { 
-      title: "Facebook", 
-      isMega: false, 
-      items: ["Page Likes", "Post Likes", "Post Views", "Video Views", "Event Responses"] 
-    },
     { title: "All Services", active: true, isMega: true }
   ],
   megaMenu: {
-    tabs: ["TikTok", "Instagram", "YouTube", "Facebook", "Other"],
+    tabs: ["TikTok", "Instagram", "YouTube"],
     categories: {
       TikTok: [
         { label: "Engagement", items: ["Likes", "Views", "Followers", "Shares", "Comments", "Saves"] },
@@ -42,14 +37,6 @@ const NAVBAR_CONTENT = {
       YouTube: [
         { label: "Main Channel", items: ["Views", "Subscribers", "Likes", "Comments", "Shares"] },
         { label: "Shorts", items: ["Shorts Views", "Shorts Likes", "Shorts Comments"] }
-      ],
-      Facebook: [
-        { label: "Engagement", items: ["Page Likes", "Post Likes", "Post Views", "Video Views"] },
-        { label: "Growth", items: ["Followers", "Event Responses", "Shares"] }
-      ],
-      "Other": [
-        { label: "Twitter/X", items: ["Followers", "Retweets", "Likes"] },
-        { label: "LinkedIn", items: ["Connections", "Followers", "Likes"] }
       ]
     },
     trending: [
