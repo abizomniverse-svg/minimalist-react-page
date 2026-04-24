@@ -1,6 +1,5 @@
 import Navbar from '../../components/layout/Navbar';
 import HeroSection from './HeroSection';
-import HowItWorksSection from './HowItWorksSection';
 import OrderStepsSection from './OrderStepsSection';
 import TrendingPackage from './TrendingPackage';
 import PremiumFeatures from './PremiumFeatures';
@@ -17,7 +16,6 @@ const LandingPage = () => {
     <main className="landing-page relative bg-white">
       <Navbar />
       <HeroSection />
-      <HowItWorksSection />
       <OrderStepsSection />
       <TrendingPackage />
       <PremiumFeatures />
@@ -25,12 +23,9 @@ const LandingPage = () => {
       <WhyTikytop />
       <TargetedAudience />
       <FaqSection />
-
       <TestimonialSection />
       <Spotlight />
       <Footer />
-
-      {/* Footer can be added here */}
     </main>
   );
 };
