@@ -23,8 +23,42 @@ export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', password: '', confirm: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    // Demo registration - accept any valid format
+    if (!form.name || !form.email || !form.password || !form.confirm) {
+      setErrorMessage('Please fill in all fields');
+      return;
+    }
+    
+    if (form.password !== form.confirm) {
+      setErrorMessage('Passwords do not match');
+      return;
+    }
+    
+    if (!form.email.includes('@') || !form.email.includes('.')) {
+      setErrorMessage('Please enter a valid email address');
+      return;
+    }
+    
+    setIsSubmitting(true);
+    setErrorMessage('');
+    
+    // Simulate API delay
+    setTimeout(() => {
+      setIsSubmitting(false);
+      // In a real app, we'd store user data and handle actual registration
+      // For demo, we'll just redirect to dashboard
+      window.location.href = '/dashboard';
+    }, 1000);
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#e0f7fa] via-[#c8b6f5] to-[#7BC8F6] p-4 md:p-8">
@@ -49,7 +83,17 @@ export default function Register() {
 
             <h1 className="text-4xl md:text-5xl font-black text-white tracking-widest mb-8 uppercase">Register</h1>
 
-            <form className="flex flex-col gap-5" onSubmit={(e) => e.preventDefault()}>
+             <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+               {errorMessage && (
+                 <div className="mb-3 p-3 bg-red-100 border border-red-200 rounded-lg text-red-700">
+                   {errorMessage}
+                 </div>
+               )}
+               {successMessage && (
+                 <div className="mb-3 p-3 bg-green-100 border border-green-200 rounded-lg text-green-700">
+                   {successMessage}
+                 </div>
+               )}
               <div>
                 <label className="block text-white/70 text-xs font-bold tracking-[0.2em] uppercase mb-2">Full Name</label>
                 <input
@@ -108,12 +152,30 @@ export default function Register() {
                 </div>
               </div>
 
-              <button
-                type="submit"
-                className="w-full py-4 bg-white text-[#020A1B] font-black text-[15px] rounded-full hover:bg-[#FF00C8] hover:text-white transition-all shadow-lg hover:scale-[1.02] active:scale-[0.98] uppercase tracking-widest mt-2"
-              >
-                Create Account
-              </button>
+               {errorMessage && (
+                 <div className="mb-3 p-3 bg-red-100 border border-red-200 rounded-lg text-red-700">
+                   {errorMessage}
+                 </div>
+               )}
+               {successMessage && (
+                 <div className="mb-3 p-3 bg-green-100 border border-green-200 rounded-lg text-green-700">
+                   {successMessage}
+                 </div>
+               )}
+               <button
+                 type="submit"
+                 disabled={isSubmitting}
+                 className={`w-full py-4 bg-white text-[#020A1B] font-black text-[15px] rounded-full hover:bg-[#FF00C8] hover:text-white transition-all shadow-lg hover:scale-[1.02] active:scale-[0.98] uppercase tracking-widest mt-2 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+               >
+                       {isSubmitting ? (
+                         <div className="flex items-center justify-center gap-2">
+                           <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                           Creating account...
+                         </div>
+                       ) : (
+                         'Create Account'
+                       )}
+               </button>
             </form>
 
             <p className="text-center text-white/60 text-sm font-medium mt-6">

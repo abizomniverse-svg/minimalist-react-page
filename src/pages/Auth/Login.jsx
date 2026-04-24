@@ -21,8 +21,32 @@ const LockIllustration = () => (
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [form, setForm] = useState({ username: '', password: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    // Demo authentication - accept any credentials
+    if (!form.username || !form.password) {
+      setErrorMessage('Please fill in both fields');
+      return;
+    }
+    
+    setIsSubmitting(true);
+    setErrorMessage('');
+    
+    // Simulate API delay
+    setTimeout(() => {
+      setIsSubmitting(false);
+      // In a real app, we'd store user data in localStorage or context
+      // For demo, we'll just redirect to dashboard
+      window.location.href = '/dashboard';
+    }, 1000);
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#e0f7fa] via-[#c8b6f5] to-[#7BC8F6] p-4 md:p-8">
@@ -49,9 +73,19 @@ export default function Login() {
 
             <h1 className="text-4xl md:text-5xl font-black text-white tracking-widest mb-10 uppercase">Login</h1>
 
-            <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
               <div>
-                <label className="block text-white/70 text-xs font-bold tracking-[0.2em] uppercase mb-2">User Name</label>
+                {errorMessage && (
+                <div className="mb-2 p-3 bg-red-100 border border-red-200 rounded-lg text-red-700">
+                  {errorMessage}
+                </div>
+              )}
+              {successMessage && (
+                <div className="mb-2 p-3 bg-green-100 border border-green-200 rounded-lg text-green-700">
+                  {successMessage}
+                </div>
+              )}
+              <label className="block text-white/70 text-xs font-bold tracking-[0.2em] uppercase mb-2">User Name</label>
                 <input
                   type="text"
                   name="username"
@@ -92,12 +126,32 @@ export default function Login() {
                 </div>
               </div>
 
-              <button
-                type="submit"
-                className="w-full py-4 bg-white text-[#020A1B] font-black text-[15px] rounded-full hover:bg-[#FF00C8] hover:text-white transition-all shadow-lg hover:scale-[1.02] active:scale-[0.98] uppercase tracking-widest mt-2"
-              >
-                Sign In
-              </button>
+                {errorMessage && (
+                 <div className="mb-2 p-3 bg-red-100 border border-red-200 rounded-lg text-red-700">
+                   {errorMessage}
+                 </div>
+               )}
+               {successMessage && (
+                 <div className="mb-2 p-3 bg-green-100 border border-green-200 rounded-lg text-green-700">
+                   {successMessage}
+                 </div>
+                )}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={`w-full py-4 bg-white text-[#020A1B] font-black text-[15px] rounded-full hover:bg-[#FF00C8] hover:text-white transition-all shadow-lg hover:scale-[1.02] active:scale-[0.98] uppercase tracking-widest mt-2 ${
+                    isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                  }`}
+                >
+                      {isSubmitting ? (
+                        <div className="flex items-center justify-center gap-2">
+                          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                          Signing in...
+                        </div>
+                      ) : (
+                        'Sign In'
+                      )}
+                </button>
             </form>
 
             <p className="text-center text-white/60 text-sm font-medium mt-8">
