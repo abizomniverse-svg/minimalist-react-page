@@ -6,45 +6,56 @@ const NAVBAR_CONTENT = {
   loginText: "Login",
   navItems: [
     { 
-        title: "TikTok", 
-        isMega: false, 
-        items: ["TikTok Likes", "TikTok Views", "TikTok Followers", "TikTok Shares", "TikTok Comments"] 
+      title: "TikTok", 
+      isMega: false, 
+      items: ["TikTok Likes", "TikTok Views", "TikTok Followers", "TikTok Shares", "TikTok Comments", "TikTok Saves"] 
     },
     { 
-        title: "Instagram", 
-        isMega: false, 
-        items: ["Instagram Likes", "Instagram Views", "Instagram Followers", "Instagram Reels", "Story Views"] 
+      title: "Instagram", 
+      isMega: false, 
+      items: ["Instagram Likes", "Instagram Views", "Instagram Followers", "Instagram Reels", "Story Views", "Story Likes"] 
     },
     { 
-        title: "YouTube", 
-        isMega: false, 
-        items: ["YouTube Views", "YouTube Subscribers", "YouTube Likes", "Shorts Views"] 
+      title: "YouTube", 
+      isMega: false, 
+      items: ["YouTube Views", "YouTube Subscribers", "YouTube Likes", "Shorts Views", "Shorts Likes"] 
+    },
+    { 
+      title: "Facebook", 
+      isMega: false, 
+      items: ["Page Likes", "Post Likes", "Post Views", "Video Views", "Event Responses"] 
     },
     { title: "All Services", active: true, isMega: true }
   ],
   megaMenu: {
-    tabs: ["Instagram", "Tiktok", "Youtube", "Other Services"],
+    tabs: ["TikTok", "Instagram", "YouTube", "Facebook", "Other"],
     categories: {
+      TikTok: [
+        { label: "Engagement", items: ["Likes", "Views", "Followers", "Shares", "Comments", "Saves"] },
+        { label: "Growth", items: ["Mentions", "Shares", "Saves"] }
+      ],
       Instagram: [
-        { label: "Instagram", items: ["Likes", "Views", "Followers", "Story Views", "Impressions & Reach"] },
-        { label: "IG Reels", items: ["Likes", "Views", "Saves", "Impressions"] }
+        { label: "Main Feed", items: ["Likes", "Views", "Followers", "Impressions", "Reach"] },
+        { label: "Stories", items: ["Story Views", "Story Likes", "Story Shares"] },
+        { label: "Reels", items: ["Reels Likes", "Reels Views", "Reels Shares", "Reels Saves"] }
       ],
-      Tiktok: [
-        { label: "TikTok", items: ["Likes", "Views", "Followers", "Shares", "Comments", "Saves"] }
+      YouTube: [
+        { label: "Main Channel", items: ["Views", "Subscribers", "Likes", "Comments", "Shares"] },
+        { label: "Shorts", items: ["Shorts Views", "Shorts Likes", "Shorts Comments"] }
       ],
-      Youtube: [
-        { label: "YouTube", items: ["Views", "Subscribers", "Likes", "Comments", "Shares"] },
-        { label: "YT Shorts", items: ["Views", "Likes"] }
+      Facebook: [
+        { label: "Engagement", items: ["Page Likes", "Post Likes", "Post Views", "Video Views"] },
+        { label: "Growth", items: ["Followers", "Event Responses", "Shares"] }
       ],
-      "Other Services": [
-        { label: "Facebook", items: ["Page Likes", "Post Likes", "Followers", "Views"] },
-        { label: "Twitter / X", items: ["Followers", "Retweets", "Likes"] }
+      "Other": [
+        { label: "Twitter/X", items: ["Followers", "Retweets", "Likes"] },
+        { label: "LinkedIn", items: ["Connections", "Followers", "Likes"] }
       ]
     },
     trending: [
       { text: "Buy TikTok Likes", icon: "heart", color: "#FF00C8" },
-      { text: "Buy TikTok Followers", icon: "user", color: "#00F5D4" },
-      { text: "Buy TikTok Views", icon: "eye", color: "#A6FF00" }
+      { text: "Buy Instagram Followers", icon: "user", color: "#00F5D4" },
+      { text: "Buy YouTube Views", icon: "eye", color: "#A6FF00" }
     ]
   }
 };

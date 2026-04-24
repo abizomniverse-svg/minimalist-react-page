@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const FOOTER_CONTENT = {
     logoText: "TikyTop",
-    description: "TikyTop provides simple and effective tools to support your social media presence. Explore our features and grow smarter, every step of the way.",
+     description: "TikyTop is your trusted partner for authentic social media growth. We provide safe, reliable, and effective growth services for TikTok, Instagram, YouTube, and Facebook to help you stand out and attain stardom.",
     copyright: "Copyright © 2026 TikyTop. All Rights Reserved.",
     disclaimer: "TikyTop is a standalone social media growth service that is not affiliated with or endorsed by TikTok, Instagram, Facebook, Twitter (X), YouTube, Google, or any other social media platform.",
     paymentIcons: ["Paypal", "Razorpay", "Stripe", "Cashfree"],
