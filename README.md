@@ -1,77 +1,133 @@
-# Minimalist React Page
+# TikyTop - Social Media Growth Platform
 
-A modern, responsive landing page built with React and Vite. This project showcases a clean, minimalist design with smooth animations and intuitive user experience.
+A modern, high-conversion landing page and order management system for TikyTop - a social media growth service helping creators and businesses grow their TikTok, Instagram, and YouTube presence with real followers, likes, views, and engagement.
 
 ## Table of Contents
+
 - [Overview](#overview)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Available Scripts](#available-scripts)
 - [Project Structure](#project-structure)
-- [Components](#components)
-- [Pages](#pages)
-- [Styling](#styling)
+- [Core Components](#core-components)
+- [Pages Overview](#pages-overview)
+- [Quick Order Flow](#quick-order-flow)
+- [Authentication System](#authentication-system)
+- [Dashboard Features](#dashboard-features)
+- [Scroll Animations](#scroll-animations)
 - [Responsive Design](#responsive-design)
-- [Performance Optimization](#performance-optimization)
-- [Environment Variables](#environment-variables)
+- [Color Scheme](#color-scheme)
+- [API & Services](#api--services)
 - [Deployment](#deployment)
+- [Environment Variables](#environment-variables)
 - [Contributing](#contributing)
 - [License](#license)
-- [Contact](#contact)
-- [Acknowledgements](#acknowledgements)
+- [Support](#support)
 
 ## Overview
 
-This project is a minimalist React application built with Vite, featuring a modern landing page design. The application includes multiple sections such as hero, features, testimonials, pricing, and contact forms. It's designed to be lightweight, fast, and easily customizable.
+TikyTop is a full-stack social media growth platform that helps creators and businesses amplify their social media presence. The platform provides services for TikTok, Instagram, and YouTube including followers, likes, views, comments, and shares from real, engaged accounts.
 
-The application demonstrates best practices in React development including component-based architecture, responsive design, and performance optimization techniques.
+This project includes:
+- High-converting landing page with scroll animations
+- Quick Order tool for instant purchases
+- Full dashboard for order management
+- Authentication system with session management
+- Order processing wizard
+- Analytics and reporting
+
+### Key Metrics
+- 2M+ Orders Delivered
+- 99.9% Success Rate
+- 4.9/5 User Rating
+- 30-Day Refill Guarantee
 
 ## Features
 
-- ✅ Fully responsive design for all device sizes
-- ✅ Smooth scroll animations and transitions
-- ✅ Modern UI with clean, minimalist aesthetics
-- ✅ Interactive components (buttons, forms, navigation)
-- ✅ Optimized for performance with lazy loading
-- ✅ SEO-friendly structure with semantic HTML
-- ✅ Accessible components following WCAG guidelines
-- ✅ Easy to customize and extend
-- ✅ Built with React 18 and Vite for fast development
-- ✅ ESLint configured for code quality
-- ✅ Multiple page routes (Landing, Auth, Order)
-- ✅ Form validation and handling
-- ✅ Asset optimization (images, icons, SVGs)
-- ✅ Environment variable support
-- ✅ Production-ready build setup
+### Landing Page
+- Responsive hero section with Quick Order tool
+- Transparent glass morphism order card
+- Scroll-triggered animations using GSAP ScrollTrigger
+- Floating parallax background effects
+- Progress bar showing scroll position
+- Section reveal animations
+- Package cards with stagger effects
+- Testimonial horizontal scroll with pin
+- FAQ accordion with smooth reveals
+- Feature cards with scale/opacity animations
+
+### Quick Order System
+- Platform selection (TikTok, Instagram, YouTube)
+- Service selection (Followers, Likes, Views, Comments, Shares)
+- Quantity presets + custom input
+- Real-time price calculation
+- Login check → redirect to dashboard
+- Order pre-filling on dashboard
+
+### Dashboard
+- Overview tab with order statistics
+- New order tab with full wizard
+- Active orders tracking
+- Completed orders history
+- Wallet balance management
+- Profile settings
+
+### Order Flow
+- Account lookup by profile URL
+- Service package selection
+- Post/package selection (where applicable)
+- Customization options
+- Secure checkout
+- Order confirmation
+
+### Authentication
+- Email/password login
+- Demo login for testing
+- Session management with sessionStorage
+- Protected routes with AuthGuard
+- Redirect after login with state
+
+### Animations
+- GSAP ScrollTrigger integration
+- Progress bar synced to scroll
+- Parallax backgrounds
+- Fade-in section reveals
+- Scale/opacity effects
+- Horizontal scroll sections
+- Accordion animations
 
 ## Tech Stack
 
 ### Frontend
-- **React 18** - JavaScript library for building user interfaces
-- **Vite** - Next-generation frontend tooling for fast builds
-- **CSS3** - Styling with modern CSS features
-- **JavaScript ES6+** - Modern JavaScript syntax and features
+- **React 18** - UI library with hooks
+- **Vite** - Fast build tool
+- **Framer Motion** - Animation library (for some components)
+- **GSAP** - Professional animations with ScrollTrigger
+- **React Router v6** - Client-side routing
 
-### Development Tools
-- **ESLint** - Code linting for maintaining code quality
-- **Prettier** - Code formatting (configured in ESLint)
+### Styling
+- **Tailwind CSS** - Utility-first CSS framework
+- **CSS Variables** - Theme customization
+- **Backdrop Filter** - Glass morphism effects
+
+### Development
+- **ESLint** - Code quality
 - **Git** - Version control
 - **npm** - Package management
 
-### Build & Deployment
+### Build & Deploy
 - **Vite Build** - Optimized production builds
-- **Static Hosting** - Compatible with Netlify, Vercel, GitHub Pages, etc.
+- **Static Hosting** - Vercel, Netlify compatible
 
 ## Getting Started
 
-To get a local copy up and running follow these simple steps.
-
 ### Prerequisites
-- Node.js (version 16 or higher)
-- npm (version 7 or higher) or yarn
+
+- Node.js v16+
+- npm v7+ or yarn
+- Git
 
 ### Installation
 
@@ -90,266 +146,351 @@ To get a local copy up and running follow these simple steps.
    npm install
    ```
 
-### Running the Development Server
+4. Start the development server
+   ```bash
+   npm run dev
+   ```
 
-Start the development server with hot reload:
-```bash
-npm run dev
-```
-
-The application will be available at `http://localhost:5173`.
-
-## Usage
-
-### Development
-
-- `npm run dev` - Starts the development server
-- `npm run build` - Builds the application for production
-- `npm run preview` - Previews the production build locally
-- `npm run lint` - Runs ESLint to check for code issues
-- `npm run format` - Formats code with Prettier
-
-### Building for Production
-
-Create an optimized production build:
-```bash
-npm run build
-```
-
-The build output will be in the `dist` directory.
-
-### Previewing Production Build
-
-To preview the production build locally:
-```bash
-npm run preview
-```
+The application will be available at `http://localhost:5173`
 
 ## Available Scripts
 
-In the `package.json` file, you can find the following scripts:
-
 | Script | Description |
 |--------|-------------|
-| `npm run dev` | Start development server with Vite |
+| `npm run dev` | Start development server |
 | `npm run build` | Build for production |
 | `npm run preview` | Preview production build |
-| `npm run lint` | Run ESLint for code quality |
-| `npm run format` | Format code with Prettier |
-| `npm run test` | Run tests (if configured) |
+| `npm run lint` | Run ESLint |
 
 ## Project Structure
 
 ```
-minimalist-react-page/
-├── public/                 # Static assets
-│   ├── favicon.svg         # Site favicon
-│   └── icons.svg           # Application icons
-├── src/                    # Source code
-│   ├── assets/             # Images, logos, and media files
-│   ├── components/         # Reusable UI components
-│   │   ├── layout/         # Layout components (Navbar, Footer)
-│   │   └── ui/             # Primitive UI components (Button, Input)
-│   ├── pages/              # Page components
-│   │   ├── Auth/           # Authentication pages (Login, Register)
-│   │   ├── Landing/        # Landing page sections
-│   │   └── Order/          # Order flow pages
-│   ├── routes/             # Application routing
-│   ├── utils/              # Utility functions and constants
-│   ├── App.jsx             # Main application component
-│   ├── main.jsx            # Application entry point
-│   ├── index.css           # Global styles
-│   └── constants.js        # Application constants
-├── .gitignore              # Git ignore file
-├── eslint.config.js        # ESLint configuration
-├── index.html              # HTML template
-├── package.json            # npm dependencies and scripts
-├── package-lock.json       # Dependency lock file
-├── README.md               # Project documentation
-└── vite.config.js          # Vite configuration
+tikytop/
+├── public/
+│   └── icons.svg              # SVG icons
+├── src/
+│   ├── assets/               # Static assets
+│   ├── components/
+│   │   ├── layout/
+│   │   │   ├── Navbar.jsx    # Navigation header
+│   │   │   └── Footer.jsx    # Page footer
+│   │   └── AuthGuard.jsx      # Route protection
+│   ├── hooks/
+│   │   └── useScrollAnimations.jsx  # GSAP animations hook
+│   ├── pages/
+│   │   ├── Auth/
+│   │   │   └── Login.jsx     # Login page
+│   │   ├── Dashboard.jsx     # Main dashboard
+│   │   ├── Landing/
+│   │   │   ├── LandingPage.jsx
+│   │   │   ├── HeroSection.jsx
+│   │   │   ├── TrendingPackage.jsx
+│   │   │   ├── TestimonialSection.jsx
+│   │   │   ├── FaqSection.jsx
+│   │   │   └── ...more sections
+│   │   └── Order/
+│   │       └── OrderPage.jsx
+│   ├── routes/
+│   │   └── AppRoutes.jsx
+│   ├── utils/
+│   │   └── auth.js          # Auth utilities
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package.json
+├── tailwind.config.js
+└── vite.config.js
 ```
 
-## Components
+## Core Components
 
-### Layout Components
-- **Navbar** - Responsive navigation menu
-- **Footer** - Page footer with links and social media
+### Layout
+- **Navbar** - Responsive navigation with links and auth
+- **Footer** - Links, social media, contact info
 
-### UI Components
-- **Button** - Customizable button component
-- **Input** - Form input with validation
-- **Card** - Card component for displaying content
-- **Modal** - Modal dialog component
+### Landing Sections
+- **HeroSection** - Main hero with Quick Order
+- **OrderStepsSection** - Visual order guide
+- **TrendingPackage** - Elite growth packages
+- **PremiumFeatures** - Feature highlights
+- **AnalyticsSection** - Statistics and numbers
+- **Spotlight** - Special offers
+- **TargetedAudience** - Audience info
+- **WhyTikytop** - Value proposition
+- **TestimonialSection** - User testimonials with scroll
+- **FaqSection** - FAQ accordion
 
-### Landing Page Sections
-- **HeroSection** - Main hero section with call-to-action
-- **FeaturesSection** - Highlights key features
-- **TestimonialSection** - Customer testimonials
-- **TargetedAudience** - Audience targeting information
-- **Spotlight** - Special offers or highlights
-- **TrendingPackage** - Popular packages or services
-- **WhyTikytop** - Value proposition section
-- **FaqSection** - Frequently asked questions
-- **OrderStepsSection** - Visual guide to the order process
+### Auth
+- **Login** - Email/password login
+- **Register** - Account registration
+- **AuthGuard** - Route protection wrapper
 
-### Order Flow Components
-- **OrderPage** - Main order processing page
-- **StepFindAccount** - Account lookup step
-- **StepSelectPackage** - Package selection step
-- **StepSelectPosts** - Post selection step
-- **StepCustomize** - Customization options
-- **StepCheckout** - Payment and checkout
-- **StepSuccess** - Success confirmation
-- **OrderProgress** - Progress indicator
+## Pages Overview
 
-## Pages
+### Landing Page (`/`)
+The main landing page combining all sections:
+- Hero with Quick Order tool
+- Order steps
+- Packages
+- Features
+- Testimonials
+- FAQ
 
-### Authentication Pages
-- **Login.jsx** - User login form
-- **Register.jsx** - User registration form
+### Login Page (`/login`)
+- Email/password form
+- Demo login button
+- Redirects back after auth
 
-### Landing Pages
-- **LandingPage.jsx** - Main landing page combining all sections
+### Dashboard (`/dashboard`)
+Full order management:
+- Overview with stats
+- New order creation
+- Active orders
+- Completed orders
+- Wallet
+- Settings
 
-### Order Pages
-- **OrderPage.jsx** - Complete order flow wizard
+### Order Page (`/order`)
+Complete order wizard:
+- Find account
+- Select package
+- Select posts
+- Customize
+- Checkout
+- Success
 
-## Styling
+## Quick Order Flow
 
-The project uses CSS for styling with the following approach:
+1. User selects platform (TikTok/Instagram/YouTube)
+2. User selects service (Followers/Likes/Views/etc.)
+3. User enters profile URL
+4. User selects quantity
+5. Price calculates in real-time
+6. User clicks "Order Now"
+7. If not logged in → redirect to login
+8. After login → auto-redirect to dashboard
+9. Order form pre-filled in dashboard modal
 
-- **Global Styles** - Defined in `src/index.css` for base styles and CSS variables
-- **Component Styles** - Each component can have its own CSS or use inline styles
-- **CSS Variables** - For theme colors, spacing, and typography
-- **Responsive Design** - Using media queries and flexible units
-- **Animations** - CSS transitions and keyframe animations
+```javascript
+// Quick Order handleOrder logic
+const handleOrder = () => {
+  if (!isAuthenticated()) {
+    navigate('/login', { state: { from: '/dashboard', order: {...} } });
+    return;
+  }
+  navigate('/dashboard', { state: { order: {...} } });
+};
+```
 
-### Color Scheme
-- Primary: Various shades of blue and purple
-- Secondary: Accent colors for highlights
-- Neutral: Grayscale for text and backgrounds
-- Success/Error: Semantic colors for feedback
+## Authentication System
 
-### Typography
-- Font Family: System fonts with fallbacks
-- Font Weights: Regular, medium, bold for hierarchy
-- Responsive Sizing: Using rem units for scalability
+### Session Management
+Uses sessionStorage for demo authentication:
+
+```javascript
+// utils/auth.js
+const SESSION_KEY = 'tikytop_demo_session';
+
+export function setSession(user) {
+  sessionStorage.setItem(SESSION_KEY, JSON.stringify({ user }));
+}
+
+export function isAuthenticated() {
+  return !!getSession();
+}
+```
+
+### Protected Routes
+The AuthGuard component protects dashboard routes:
+
+```javascript
+// components/AuthGuard.jsx
+if (!isAuthenticated()) {
+  return <Navigate to="/login" state={{ from: location }} />;
+}
+```
+
+### Login Redirect
+After login, users are redirected to their intended destination:
+
+```javascript
+// pages/Auth/Login.jsx
+const from = location.state?.from || '/dashboard';
+navigate(from, { replace: true });
+```
+
+## Dashboard Features
+
+### Overview Tab
+- Total orders count
+- Active orders count
+- Completed orders count
+- Wallet balance
+- Recent orders list
+
+### New Order Tab
+- Platform selection
+- Service selection
+- URL input
+- Quantity selection
+- Price calculation
+- Submit order
+
+### Orders Tracking
+- Status indicators (Processing, Completed, Partial, Cancelled)
+- Order history with dates
+- Refund requests
+
+### Wallet
+- Balance display
+- Transaction history
+- Add funds option
+
+## Scroll Animations
+
+The project uses GSAP ScrollTrigger for scroll-driven animations:
+
+### Setup
+```javascript
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+```
+
+### Custom Hook
+```javascript
+// hooks/useScrollAnimations.jsx
+- Progress bar synced to scroll
+- Section reveal animations
+- Parallax background effects
+- Package cards stagger
+- Testimonials horizontal scroll
+- FAQ accordion reveals
+- Feature cards scale
+```
+
+### Animation Types
+- `toggleActions: 'play none none reverse'` - Bidirectional
+- `scrub: 1` - Smooth scroll-linked
+- `stagger` - Sequential delays
+- `markers: true` - Debug (development)
 
 ## Responsive Design
 
-The application is fully responsive and tested on:
-- Mobile devices (320px and up)
-- Tablets (768px and up)
-- Laptops (1024px and up)
-- Desktops (1280px and up)
-- Large screens (1920px and up)
-
 Breakpoints used:
-- Mobile: < 768px
-- Tablet: 768px - 1024px
+- Mobile: < 640px
+- Tablet: 640px - 1024px
 - Desktop: > 1024px
+- Large: > 1280px
 
-## Performance Optimization
+Grid system:
+- `grid-cols-1` - Mobile
+- `md:grid-cols-2` - Tablet
+- `lg:grid-cols-3` - Desktop
+- `xl:grid-cols-4` - Large
 
-Several performance optimization techniques are implemented:
+## Color Scheme
 
-1. **Code Splitting** - Dynamic imports for route-based splitting
-2. **Asset Optimization** - Optimized images and compressed assets
-3. **Lazy Loading** - Images and components load on demand
-4. **Minification** - Production build minifies CSS and JavaScript
-5. **Caching** - Proper cache headers for static assets
-6. **Efficient Rendering** - React.memo and useCallback where appropriate
-7. **Bundle Analysis** - Tools to analyze bundle size (can be added)
+### Primary Colors
+- `#FF00C8` - Pink/Magenta (main brand)
+- `#00F5D4` - Cyan/teal (accent)
+- `#A6FF00` - Lime green (highlight)
 
-## Environment Variables
+### Neutrals
+- `#020A1B` - Dark/navy (text)
+- `#64748B` - Slate (secondary text)
+- `#FAFAFA` - Off-white (backgrounds)
 
-Create a `.env` file in the root directory for environment variables:
+### Gradients
+- Hero: Linear gradient backgrounds
+- Cards: Gradient borders/overlays
+- Buttons: Gradient fills
 
+### Platform Colors
+- TikTok: `#FF00C8` to `#7E22CE`
+- Instagram: `#00F5D4` to `#405DE6`
+- YouTube: `#A6FF00` to `#22C55E`
+
+## API & Services
+
+### Service Pricing (Example)
+```javascript
+const SERVICES = {
+  tiktok: [
+    { id: 'followers', price: 2.50 },
+    { id: 'likes', price: 0.25 },
+    { id: 'views', price: 0.03 },
+    { id: 'comments', price: 3.50 },
+    { id: 'shares', price: 4.20 }
+  ],
+  // Instagram, YouTube...
+};
 ```
-VITE_API_URL=https://api.example.com
-VITE_GOOGLE_ANALYTICS_ID=UA-XXXXXXXX-X
-VITE_CONTACT_EMAIL=contact@example.com
-```
 
-Note: Variables must be prefixed with `VITE_` to be exposed to the client-side code.
+### Quantity Presets
+```javascript
+const QUANTITIES = [100, 500, 1000, 2500, 5000, 10000];
+```
 
 ## Deployment
 
-The application can be deployed to various static hosting platforms:
+### Vercel
+```bash
+npm i -g vercel
+vercel
+```
 
 ### Netlify
-1. Push to GitHub
-2. Connect repository in Netlify
-3. Set build command: `npm run build`
-4. Set publish directory: `dist`
+1. Connect GitHub repository
+2. Set build command: `npm run build`
+3. Set publish directory: `dist`
 
-### Vercel
-1. Install Vercel CLI: `npm i -g vercel`
-2. Run: `vercel`
-3. Follow prompts
+### Build Output
+Production files are built to the `dist` directory:
+- `index.html`
+- `assets/index-*.css`
+- `assets/index-*.js`
 
-### GitHub Pages
-1. Add homepage field to package.json: `"homepage": "https://username.github.io/repo"`
-2. Install gh-pages: `npm install --save-dev gh-pages`
-3. Add deploy script: `"deploy": "gh-pages -d dist"`
-4. Run: `npm run deploy`
+## Environment Variables
 
-### Docker
-```dockerfile
-# Build stage
-FROM node:18-alpine as build
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
-
-# Production stage
-FROM nginx:alpine
-COPY --from=build /app/dist /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+Create `.env` in root:
 ```
+VITE_API_URL=https://api.tikytop.com
+VITE_APP_NAME=TikyTop
+```
+
+Variables must be prefixed with `VITE_` for client exposure.
 
 ## Contributing
 
-Contributions are welcome! Please follow these steps:
-
 1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/AmazingFeature`
-3. Commit your changes: `git commit -m 'Add some AmazingFeature'`
-4. Push to the branch: `git push origin feature/AmazingFeature`
-5. Open a Pull Request
+2. Create a feature branch
+3. Make your changes
+4. Test with `npm run dev`
+5. Build with `npm run build`
+6. Commit and push
+7. Open a Pull Request
 
-### Contribution Guidelines
-- Follow the existing code style
-- Write descriptive commit messages
-- Keep pull requests focused
-- Add tests for new functionality
-- Update documentation as needed
-- Respect the code of conduct
-
-### Reporting Issues
-Please use the GitHub issue tracker to report bugs or request features.
+### Code Style
+- Use functional components with hooks
+- Follow ESLint rules
+- Use meaningful variable names
+- Comment complex logic
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT License - See LICENSE file for details.
 
-## Contact
+## Support
 
-Project Owner - [@abizomniverse-svg](https://github.com/abizomniverse-svg)
-
-Project Link: [https://github.com/abizomniverse-svg/minimalist-react-page](https://github.com/abizomniverse-svg/minimalist-react-page)
-
-## Acknowledgements
-
-- [React](https://reactjs.org/) - The web library used
-- [Vite](https://vitejs.dev/) - The build tool used
-- [ESLint](https://eslint.org/) - For maintaining code quality
-- All contributors who have helped shape this project
-- Open source community for inspiration and resources
+- GitHub Issues: Report bugs
+- Email: support@tikytop.com
+- Contact: Via website contact form
 
 ---
 
-*Built with ❤️ using React and Vite*
+Built with ❤️ using React + Vite + GSAP
