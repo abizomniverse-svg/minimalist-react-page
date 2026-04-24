@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 
 const TRENDING_PACKAGES = {
   sectionTitle: "Premium Growth Packages",
-  sectionSubtitle: "Experience our exclusive, high-impact growth solutions designed for creators who demand excellence. Each package delivers measurable results with our premium service guarantee.",
-  buttonText: "GET PREMIUM ACCESS",
+  sectionSubtitle: "⚡ Limited-time offer: All packages include 25% bonus followers FREE! Don't miss out - this exclusive deal ends soon. Join 50,000+ creators who've transformed their social media presence.",
+  buttonText: "🔥 CLAIM BONUS NOW",
+  urgencyNote: "⏰ Only 47 packages left at this price!",
   packages: [
     {
       id: "tiktok-followers",
@@ -132,8 +133,13 @@ const TrendingPackage = () => {
                             <span className="text-base font-black uppercase tracking-[0.25em] mb-4 px-4 py-2 rounded-full bg-gradient-to-r from-[#FF00C8]/10 to-[#00F5D4]/10 border border-[#FF00C8]/20" style={{ color: brandColor }}>
                                 {pkg.platform} {pkg.service}
                             </span>
-                            <h3 className="text-4xl font-black mb-6 text-[#020A1B]">Starting at {pkg.price}</h3>
-                            
+                            <div className="flex items-center justify-between mb-4">
+                              <h3 className="text-4xl font-black text-[#020A1B]">Starting at {pkg.price}</h3>
+                              <div className="bg-[#FF6B35] text-white text-xs px-3 py-1 rounded-full font-bold animate-pulse">
+                                🔥 LIMITED
+                              </div>
+                            </div>
+
                             <p className="text-[#75819A] leading-relaxed mb-8 flex-grow font-medium text-lg">{pkg.description}</p>
                             
                             <ul className="w-full text-left mb-10 flex flex-col gap-3">
@@ -147,13 +153,21 @@ const TrendingPackage = () => {
                                 ))}
                             </ul>
                             
-                            <Link 
+                            <div className="space-y-3">
+                              <Link
                                 to={`/order/${pkg.id}`}
-                                className="w-full py-4 rounded-2xl font-bold text-lg cursor-pointer transition-all duration-300 text-white flex items-center justify-center gap-3 shadow-lg"
+                                className="w-full py-5 rounded-2xl font-black text-xl cursor-pointer transition-all duration-300 text-white flex items-center justify-center gap-3 shadow-2xl hover:shadow-pink-500/25 hover:scale-105 relative overflow-hidden group"
                                 style={{ background: iconBg }}
-                            >
+                              >
                                 {buttonText}
-                            </Link>
+                                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                              </Link>
+                              <div className="text-center">
+                                <span className="text-xs text-[#FF6B35] font-bold bg-[#FF6B35]/10 px-3 py-1 rounded-full">
+                                  ⏰ Offer expires in 24 hours
+                                </span>
+                              </div>
+                            </div>
                         </motion.div>
                     );
                 })}

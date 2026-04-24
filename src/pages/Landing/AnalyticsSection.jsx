@@ -131,9 +131,25 @@ const AnalyticsSection = () => {
           <h2 className="text-4xl md:text-6xl font-black text-[#020A1B] mb-6 tracking-tight">
             {title}
           </h2>
-          <p className="text-xl md:text-2xl text-[#75819A] max-w-3xl mx-auto font-medium">
+          <p className="text-xl md:text-2xl text-[#75819A] max-w-3xl mx-auto font-medium mb-8">
             {subtitle}
           </p>
+
+          {/* Authority Badges */}
+          <div className="flex flex-wrap justify-center gap-4 mb-6">
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2 shadow-lg border border-[#FF00C8]/20 flex items-center gap-2">
+              <span className="text-lg">🏆</span>
+              <span className="font-bold text-[#020A1B] text-sm">#1 Rated Platform</span>
+            </div>
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2 shadow-lg border border-[#00F5D4]/20 flex items-center gap-2">
+              <span className="text-lg">🔬</span>
+              <span className="font-bold text-[#020A1B] text-sm">AI-Powered Analytics</span>
+            </div>
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2 shadow-lg border border-[#A6FF00]/20 flex items-center gap-2">
+              <span className="text-lg">🛡️</span>
+              <span className="font-bold text-[#020A1B] text-sm">Enterprise Security</span>
+            </div>
+          </div>
         </motion.div>
 
         {/* Key Metrics */}
