@@ -1,13 +1,79 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { THEME, GLOBAL_CONFIG } from '../../utils/constants';
 
 const HeroSection = () => {
+  const [selectedPlatform, setSelectedPlatform] = useState('');
+  const [profileUrl, setProfileUrl] = useState('');
+  const [selectedService, setSelectedService] = useState('');
+  const [quantity, setQuantity] = useState(100);
+  const [isProcessing, setIsProcessing] = useState(false);
+
   const content = {
     title: "#1 Premium TikTok Growth Service - Turn Your Profile into a Powerhouse",
     subtitle: "Experience elite social media growth with our premium TikTok services. Build authentic audiences, skyrocket engagement, and transform your profile into a monetization machine. Join 50,000+ creators who've chosen TikyTop for guaranteed results.",
     primaryCTA: "Start Premium Growth",
     secondaryCTA: "View All Services"
+  };
+
+  const platforms = [
+    { id: 'tiktok', name: 'TikTok', icon: '🎵', color: '#FF00C8' },
+    { id: 'instagram', name: 'Instagram', icon: '📸', color: '#00F5D4' },
+    { id: 'youtube', name: 'YouTube', icon: '▶️', color: '#A6FF00' },
+    { id: 'facebook', name: 'Facebook', icon: '📘', color: '#FF6B35' }
+  ];
+
+  const services = {
+    tiktok: [
+      { id: 'likes', name: 'Likes', price: 0.08, icon: '❤️' },
+      { id: 'views', name: 'Views', price: 0.02, icon: '👁️' },
+      { id: 'followers', name: 'Followers', price: 5.60, icon: '👥' },
+      { id: 'comments', name: 'Comments', price: 1.20, icon: '💬' },
+      { id: 'shares', name: 'Shares', price: 2.50, icon: '🔄' }
+    ],
+    instagram: [
+      { id: 'likes', name: 'Likes', price: 0.15, icon: '❤️' },
+      { id: 'followers', name: 'Followers', price: 3.20, icon: '👥' },
+      { id: 'views', name: 'Views', price: 0.05, icon: '👁️' },
+      { id: 'comments', name: 'Comments', price: 2.10, icon: '💬' },
+      { id: 'saves', name: 'Saves', price: 1.80, icon: '🔖' }
+    ],
+    youtube: [
+      { id: 'views', name: 'Views', price: 0.03, icon: '👁️' },
+      { id: 'likes', name: 'Likes', price: 0.25, icon: '👍' },
+      { id: 'subscribers', name: 'Subscribers', price: 13.90, icon: '🔔' },
+      { id: 'comments', name: 'Comments', price: 3.50, icon: '💬' },
+      { id: 'shares', name: 'Shares', price: 4.20, icon: '🔄' }
+    ],
+    facebook: [
+      { id: 'likes', name: 'Page Likes', price: 2.80, icon: '👍' },
+      { id: 'followers', name: 'Followers', price: 4.50, icon: '👥' },
+      { id: 'views', name: 'Post Views', price: 0.08, icon: '👁️' },
+      { id: 'shares', name: 'Shares', price: 3.20, icon: '🔄' },
+      { id: 'comments', name: 'Comments', price: 2.90, icon: '💬' }
+    ]
+  };
+
+  const calculatePrice = () => {
+    if (!selectedService || !selectedPlatform) return 0;
+    const service = services[selectedPlatform].find(s => s.id === selectedService);
+    return service ? (service.price * quantity).toFixed(2) : 0;
+  };
+
+  const handleOrder = async () => {
+    if (!selectedPlatform || !profileUrl || !selectedService) {
+      alert('Please fill in all fields');
+      return;
+    }
+
+    setIsProcessing(true);
+
+    // Simulate order processing
+    setTimeout(() => {
+      setIsProcessing(false);
+      // Redirect to order page or payment
+      window.location.href = `/order/${selectedPlatform}-${selectedService}`;
+    }, 2000);
   };
 
     return (
@@ -85,36 +151,143 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Right Content */}
-        <div className="relative w-full aspect-square lg:aspect-auto lg:h-[600px] bg-white/90 backdrop-blur-lg rounded-3xl border border-[#FF00C8]/20 flex flex-col items-center justify-center text-slate-400 group hover:bg-white/95 transition-all duration-500 shadow-2xl hover:shadow-3xl hover:shadow-pink-500/10 overflow-hidden">
+        {/* Right Content - Interactive Order Tool */}
+        <div className="relative w-full aspect-square lg:aspect-auto lg:h-[700px] bg-white/95 backdrop-blur-lg rounded-3xl border border-[#FF00C8]/20 shadow-2xl overflow-hidden">
           {/* Animated gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#FF00C8]/10 via-[#00F5D4]/5 to-[#A6FF00]/10 rounded-3xl" />
-          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent rounded-3xl animate-pulse" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#FF00C8]/5 via-[#00F5D4]/3 to-[#A6FF00]/5 rounded-3xl" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent rounded-3xl animate-pulse" />
 
-          {/* Floating elements */}
+          {/* Floating particles */}
           <div className="absolute top-8 right-8 w-16 h-16 bg-[#FF00C8]/20 rounded-full blur-xl animate-bounce" style={{ animationDelay: '1s' }}></div>
           <div className="absolute bottom-12 left-8 w-12 h-12 bg-[#00F5D4]/20 rounded-full blur-lg animate-bounce" style={{ animationDelay: '2s' }}></div>
           <div className="absolute top-1/2 right-12 w-8 h-8 bg-[#A6FF00]/20 rounded-full blur-md animate-bounce" style={{ animationDelay: '0.5s' }}></div>
 
-          {/* Main content */}
-          <div className="relative z-10 flex flex-col items-center space-y-6 p-8">
-            <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-[#FF00C8] to-[#00F5D4] flex items-center justify-center shadow-xl">
-              <svg className="w-12 h-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-            <div className="text-center space-y-3">
-              <h3 className="text-2xl font-bold text-[#020A1B]">Premium Growth Platform</h3>
-              <p className="text-[#75819A] font-medium max-w-xs">
-                Advanced analytics, AI-powered targeting, and guaranteed results for serious creators.
-              </p>
+          {/* Main Interactive Content */}
+          <div className="relative z-10 p-8 h-full flex flex-col">
+            {/* Header */}
+            <div className="text-center mb-6">
+              <h3 className="text-2xl font-bold text-[#020A1B] mb-2">🚀 Instant Order Tool</h3>
+              <p className="text-[#75819A] text-sm font-medium">Get started in under 60 seconds</p>
             </div>
 
-            {/* Feature highlights */}
-            <div className="flex flex-wrap gap-2 mt-4">
-              <span className="px-3 py-1 bg-[#FF00C8]/10 text-[#FF00C8] text-xs font-bold rounded-full border border-[#FF00C8]/20">AI-Powered</span>
-              <span className="px-3 py-1 bg-[#00F5D4]/10 text-[#00F5D4] text-xs font-bold rounded-full border border-[#00F5D4]/20">Guaranteed</span>
-              <span className="px-3 py-1 bg-[#A6FF00]/10 text-[#A6FF00] text-xs font-bold rounded-full border border-[#A6FF00]/20">Premium</span>
+            {/* Platform Selection */}
+            <div className="mb-6">
+              <label className="block text-sm font-bold text-[#020A1B] mb-3">1. Choose Platform</label>
+              <div className="grid grid-cols-2 gap-2">
+                {platforms.map((platform) => (
+                  <button
+                    key={platform.id}
+                    onClick={() => setSelectedPlatform(platform.id)}
+                    className={`p-3 rounded-xl border-2 transition-all duration-300 text-sm font-bold ${
+                      selectedPlatform === platform.id
+                        ? `border-[${platform.color}] bg-[${platform.color}]/10 text-[${platform.color}]`
+                        : 'border-gray-200 hover:border-[#FF00C8]/50 text-[#75819A]'
+                    }`}
+                  >
+                    <span className="mr-2">{platform.icon}</span>
+                    {platform.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* URL Input */}
+            <div className="mb-6">
+              <label className="block text-sm font-bold text-[#020A1B] mb-3">2. Enter URL</label>
+              <input
+                type="url"
+                value={profileUrl}
+                onChange={(e) => setProfileUrl(e.target.value)}
+                placeholder="https://..."
+                className="w-full p-4 rounded-xl border-2 border-gray-200 focus:border-[#FF00C8] outline-none transition-colors bg-white/50 backdrop-blur-sm"
+              />
+            </div>
+
+            {/* Service Selection */}
+            {selectedPlatform && (
+              <div className="mb-6">
+                <label className="block text-sm font-bold text-[#020A1B] mb-3">3. Choose Service</label>
+                <div className="grid grid-cols-1 gap-2 max-h-32 overflow-y-auto">
+                  {services[selectedPlatform].map((service) => (
+                    <button
+                      key={service.id}
+                      onClick={() => setSelectedService(service.id)}
+                      className={`p-3 rounded-xl border-2 transition-all duration-300 text-left ${
+                        selectedService === service.id
+                          ? 'border-[#FF00C8] bg-[#FF00C8]/10'
+                          : 'border-gray-200 hover:border-[#FF00C8]/50'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <span className="text-lg">{service.icon}</span>
+                          <span className="font-bold text-[#020A1B]">{service.name}</span>
+                        </div>
+                        <span className="text-[#FF00C8] font-bold">${service.price}</span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Quantity & Price */}
+            {selectedService && (
+              <div className="mb-6">
+                <label className="block text-sm font-bold text-[#020A1B] mb-3">4. Select Quantity</label>
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() => setQuantity(Math.max(10, quantity - 10))}
+                    className="w-10 h-10 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center font-bold text-[#020A1B]"
+                  >
+                    -
+                  </button>
+                  <input
+                    type="number"
+                    value={quantity}
+                    onChange={(e) => setQuantity(Math.max(10, parseInt(e.target.value) || 10))}
+                    min="10"
+                    className="flex-1 p-3 rounded-lg border-2 border-gray-200 text-center font-bold text-[#020A1B]"
+                  />
+                  <button
+                    onClick={() => setQuantity(quantity + 10)}
+                    className="w-10 h-10 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center font-bold text-[#020A1B]"
+                  >
+                    +
+                  </button>
+                </div>
+                <div className="mt-3 p-4 bg-gradient-to-r from-[#FF00C8]/10 to-[#00F5D4]/10 rounded-xl border border-[#FF00C8]/20">
+                  <div className="text-center">
+                    <div className="text-2xl font-black text-[#020A1B]">Total: ${calculatePrice()}</div>
+                    <div className="text-sm text-[#75819A] font-semibold">Instant delivery • 30-day guarantee</div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Order Button */}
+            <div className="mt-auto">
+              <button
+                onClick={handleOrder}
+                disabled={!selectedPlatform || !profileUrl || !selectedService || isProcessing}
+                className={`w-full py-4 rounded-xl font-black text-lg transition-all duration-300 ${
+                  isProcessing
+                    ? 'bg-gray-400 cursor-not-allowed'
+                    : 'bg-gradient-to-r from-[#FF00C8] to-[#D600A7] hover:from-[#D600A7] hover:to-[#B0008F] text-white shadow-xl hover:shadow-2xl hover:shadow-pink-500/25 transform hover:scale-105'
+                }`}
+              >
+                {isProcessing ? (
+                  <div className="flex items-center justify-center gap-3">
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    Processing...
+                  </div>
+                ) : (
+                  `Order Now - $${calculatePrice()}`
+                )}
+              </button>
+              <p className="text-xs text-[#75819A] text-center mt-2">
+                ⚡ Instant delivery • 🛡️ Secure payment • 📞 24/7 support
+              </p>
             </div>
           </div>
         </div>
