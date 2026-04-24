@@ -132,7 +132,7 @@ const TrendingPackage = () => {
                             <span className="text-base font-black uppercase tracking-[0.25em] mb-4 px-4 py-2 rounded-full bg-gradient-to-r from-[#FF00C8]/10 to-[#00F5D4]/10 border border-[#FF00C8]/20" style={{ color: brandColor }}>
                                 {pkg.platform} {pkg.service}
                             </span>
-                            <h3 className="text-3xl font-extrabold mb-4 text-[#020A1B]">From {pkg.price}</h3>
+                            <h3 className="text-4xl font-black mb-6 text-[#020A1B]">Starting at {pkg.price}</h3>
                             
                             <p className="text-[#75819A] leading-relaxed mb-8 flex-grow font-medium text-lg">{pkg.description}</p>
                             
