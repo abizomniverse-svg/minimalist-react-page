@@ -7,6 +7,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
     @apply bg-white text-[#020A1B] font-main antialiased;
   }

@@ -6,7 +6,6 @@ import HeroSection from './HeroSection';
 import OrderStepsSection from './OrderStepsSection';
 import TrendingPackage from './TrendingPackage';
 import PremiumFeatures from './PremiumFeatures';
-import AnalyticsSection from './AnalyticsSection';
 import Spotlight from './Spotlight';
 import TargetedAudience from './TargetedAudience';
 import WhyTikytop from './WhyTikytop';
@@ -169,39 +168,35 @@ const LandingPage = () => {
         <HeroSection />
       </div>
       
-      <div className="landing-section landing-section-1 py-20">
+      <div className="landing-section landing-section-1 py-32 md:py-40">
         <OrderStepsSection />
       </div>
       
-      <div className="packages-section py-24">
+      <div className="packages-section py-32 md:py-40">
         <TrendingPackage />
       </div>
       
-      <div className="features-section py-20">
+      <div className="features-section py-32 md:py-40">
         <PremiumFeatures />
       </div>
       
-      <div className="analytics-section py-20">
-        <AnalyticsSection />
-      </div>
-      
-      <div className="landing-section py-20">
+      <div className="landing-section py-32 md:py-40">
         <WhyTikytop />
       </div>
       
-      <div className="platforms-section py-20">
+      <div className="platforms-section py-32 md:py-40">
         <TargetedAudience />
       </div>
       
-      <div className="landing-section py-20">
+      <div className="landing-section py-32 md:py-40">
         <FaqSection />
       </div>
       
-      <div className="testimonials-section py-20">
+      <div className="testimonials-section py-32 md:py-40">
         <TestimonialSection />
       </div>
       
-      <div className="landing-section py-20">
+      <div className="landing-section py-32 md:py-40">
         <Spotlight />
       </div>
       

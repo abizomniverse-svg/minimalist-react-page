@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion } from 'framer-motion';
 
 const TESTIMONIALS_CONTENT = {
   title: "What Our Esteemed Users Say About TikyTop",
@@ -142,7 +142,10 @@ function TestimonialCard({ testimonial, index }) {
 export default function TestimonialSection() {
   const { title, subtitle, testimonials } = TESTIMONIALS_CONTENT;
   const containerRef = useRef(null);
-  const [isPaused, setIsPaused] = useState(false);
+
+  const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials];
+  const cardWidth = 380;
+  const totalWidth = duplicatedTestimonials.length * cardWidth;
 
   return (
     <section id="testimonials" className="py-20 overflow-hidden"
@@ -165,26 +168,19 @@ export default function TestimonialSection() {
       </div>
 
       {/* Infinite Scroll */}
-      <div
-        className="relative testimonials-track"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
+      <div className="relative testimonials-track">
         <motion.div
           ref={containerRef}
           className="flex"
-          animate={{ x: [0, -1000] }}
+          animate={{ x: [0, -totalWidth / 2] }}
           transition={{
-            duration: testimonials.length * 3,
+            duration: 40,
             repeat: Infinity,
-            ease: "linear",
-            paused: isPaused
+            ease: "linear"
           }}
-          style={{
-            width: 'max-content'
-          }}
+          style={{ width: 'max-content' }}
         >
-          {[...testimonials, ...testimonials, ...testimonials].map((testimonial, index) => (
+          {duplicatedTestimonials.map((testimonial, index) => (
             <TestimonialCard key={`${testimonial.name}-${index}`} testimonial={testimonial} index={index % testimonials.length} />
           ))}
         </motion.div>
