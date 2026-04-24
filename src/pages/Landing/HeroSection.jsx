@@ -25,32 +25,44 @@ const HeroSection = () => {
 
   const services = {
     tiktok: [
-      { id: 'likes', name: 'Likes', price: 0.08, icon: '❤️' },
-      { id: 'views', name: 'Views', price: 0.02, icon: '👁️' },
-      { id: 'followers', name: 'Followers', price: 5.60, icon: '👥' },
-      { id: 'comments', name: 'Comments', price: 1.20, icon: '💬' },
-      { id: 'shares', name: 'Shares', price: 2.50, icon: '🔄' }
+      { id: 'tiktok-likes', name: 'Likes', price: 0.08, icon: '❤️' },
+      { id: 'tiktok-views', name: 'Views', price: 0.02, icon: '👁️' },
+      { id: 'tiktok-followers', name: 'Followers', price: 5.60, icon: '👥' },
+      { id: 'tiktok-comments', name: 'Comments', price: 1.20, icon: '💬' },
+      { id: 'tiktok-shares', name: 'Shares', price: 2.50, icon: '🔄' },
+      { id: 'tiktok-saves', name: 'Saves', price: 1.80, icon: '🔖' }
     ],
     instagram: [
-      { id: 'likes', name: 'Likes', price: 0.15, icon: '❤️' },
-      { id: 'followers', name: 'Followers', price: 3.20, icon: '👥' },
-      { id: 'views', name: 'Views', price: 0.05, icon: '👁️' },
-      { id: 'comments', name: 'Comments', price: 2.10, icon: '💬' },
-      { id: 'saves', name: 'Saves', price: 1.80, icon: '🔖' }
+      { id: 'instagram-likes', name: 'Likes', price: 0.15, icon: '❤️' },
+      { id: 'instagram-followers', name: 'Followers', price: 3.20, icon: '👥' },
+      { id: 'instagram-views', name: 'Views', price: 0.05, icon: '👁️' },
+      { id: 'instagram-comments', name: 'Comments', price: 2.10, icon: '💬' },
+      { id: 'instagram-saves', name: 'Saves', price: 1.80, icon: '🔖' },
+      { id: 'instagram-story-views', name: 'Story Views', price: 0.035, icon: '📱' },
+      { id: 'instagram-story-likes', name: 'Story Likes', price: 0.024, icon: '📱' },
+      { id: 'instagram-reels-likes', name: 'Reels Likes', price: 0.011, icon: '🎬' },
+      { id: 'instagram-reels-views', name: 'Reels Views', price: 0.003, icon: '🎬' },
+      { id: 'instagram-reels-shares', name: 'Reels Shares', price: 0.24, icon: '🎬' },
+      { id: 'instagram-reels-saves', name: 'Reels Saves', price: 0.15, icon: '🎬' }
     ],
     youtube: [
-      { id: 'views', name: 'Views', price: 0.03, icon: '👁️' },
-      { id: 'likes', name: 'Likes', price: 0.25, icon: '👍' },
-      { id: 'subscribers', name: 'Subscribers', price: 13.90, icon: '🔔' },
-      { id: 'comments', name: 'Comments', price: 3.50, icon: '💬' },
-      { id: 'shares', name: 'Shares', price: 4.20, icon: '🔄' }
+      { id: 'youtube-views', name: 'Views', price: 0.03, icon: '👁️' },
+      { id: 'youtube-likes', name: 'Likes', price: 0.25, icon: '👍' },
+      { id: 'youtube-subscribers', name: 'Subscribers', price: 13.90, icon: '🔔' },
+      { id: 'youtube-comments', name: 'Comments', price: 3.50, icon: '💬' },
+      { id: 'youtube-shares', name: 'Shares', price: 4.20, icon: '🔄' },
+      { id: 'youtube-shorts-views', name: 'Shorts Views', price: 0.0016, icon: '📹' },
+      { id: 'youtube-shorts-likes', name: 'Shorts Likes', price: 0.024, icon: '📹' }
     ],
     facebook: [
-      { id: 'likes', name: 'Page Likes', price: 2.80, icon: '👍' },
-      { id: 'followers', name: 'Followers', price: 4.50, icon: '👥' },
-      { id: 'views', name: 'Post Views', price: 0.08, icon: '👁️' },
-      { id: 'shares', name: 'Shares', price: 3.20, icon: '🔄' },
-      { id: 'comments', name: 'Comments', price: 2.90, icon: '💬' }
+      { id: 'facebook-page-likes', name: 'Page Likes', price: 2.80, icon: '👍' },
+      { id: 'facebook-followers', name: 'Followers', price: 4.50, icon: '👥' },
+      { id: 'facebook-post-views', name: 'Post Views', price: 0.08, icon: '👁️' },
+      { id: 'facebook-video-views', name: 'Video Views', price: 0.004, icon: '🎥' },
+      { id: 'facebook-shares', name: 'Shares', price: 3.20, icon: '🔄' },
+      { id: 'facebook-comments', name: 'Comments', price: 2.90, icon: '💬' },
+      { id: 'facebook-post-likes', name: 'Post Likes', price: 0.015, icon: '❤️' },
+      { id: 'facebook-event-responses', name: 'Event Responses', price: 0.15, icon: '📅' }
     ]
   };
 
@@ -71,8 +83,8 @@ const HeroSection = () => {
     // Simulate order processing
     setTimeout(() => {
       setIsProcessing(false);
-      // Redirect to order page or payment
-      window.location.href = `/order/${selectedPlatform}-${selectedService}`;
+      // Redirect to order page with correct service ID
+      window.location.href = `/order/${selectedService}`;
     }, 2000);
   };
 
