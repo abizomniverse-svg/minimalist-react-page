@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import TikTokIcon from '../../assets/icon/icons8-tiktok-50.svg';
 import InstagramIcon from '../../assets/icon/icons8-instagram-50.svg';
@@ -88,18 +88,13 @@ const TESTIMONIALS = [
   }
 ];
 
-function TestimonialCard({ testimonial, index }) {
-  const isSvg = typeof getPlatformIcon(testimonial.platform) !== 'string';
-  
+function TestimonialCard({ testimonial }) {
+  const iconSrc = getPlatformIcon(testimonial.platform);
+  const isSvg = typeof iconSrc === 'string' && iconSrc.includes('.svg');
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.05 }}
-      whileHover={{ y: -5 }}
-      className="flex-shrink-0 w-72 mx-3"
-    >
-      <div className="h-full p-5 rounded-2xl border border-gray-100 hover:shadow-lg hover:border-[#FF00C8]/20 transition-all duration-300">
+    <div className="flex-shrink-0 w-[260px] sm:w-[280px] md:w-[300px] mx-2 sm:mx-3">
+      <div className="h-full p-4 sm:p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-lg hover:border-[#FF00C8]/20 transition-all duration-300">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-1">
             {[...Array(testimonial.rating)].map((_, i) => (
@@ -107,13 +102,13 @@ function TestimonialCard({ testimonial, index }) {
             ))}
           </div>
           {isSvg ? (
-            <img src={getPlatformIcon(testimonial.platform)} alt={testimonial.platform} className="w-5 h-5" />
+            <img src={iconSrc} alt={testimonial.platform} className="w-5 h-5" />
           ) : (
-            <span className="text-lg">{getPlatformIcon(testimonial.platform)}</span>
+            <span className="text-lg">{iconSrc}</span>
           )}
         </div>
 
-        <p className="text-[#64748B] text-xs leading-relaxed mb-4 line-clamp-3">
+        <p className="text-[#64748B] text-xs sm:text-[13px] leading-relaxed mb-4 line-clamp-3">
           "{testimonial.content}"
         </p>
 
@@ -127,103 +122,73 @@ function TestimonialCard({ testimonial, index }) {
             src={testimonial.avatar}
             alt={testimonial.name}
             className="w-9 h-9 rounded-full"
+            loading="lazy"
           />
-          <div>
-            <div className="font-semibold text-[#020A1B] text-sm">{testimonial.name}</div>
-            <div className="text-xs text-[#75819A]">{testimonial.role}</div>
+          <div className="min-w-0">
+            <div className="font-semibold text-[#020A1B] text-sm truncate">{testimonial.name}</div>
+            <div className="text-xs text-[#75819A] truncate">{testimonial.role}</div>
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
 export default function TestimonialSection() {
-  const containerRef = useRef(null);
-  const [isPaused, setIsPaused] = useState(false);
-  const [offset, setOffset] = useState(0);
-
-  const cardWidth = 300;
-  const totalCards = TESTIMONIALS.length * 3;
-  const totalWidth = totalCards * cardWidth;
-  const visibleWidth = totalWidth / 2;
-
-  useEffect(() => {
-    if (isPaused) return;
-    
-    const interval = setInterval(() => {
-      setOffset(prev => {
-        const newOffset = prev + 1;
-        return newOffset >= visibleWidth ? 0 : newOffset;
-      });
-    }, 30);
-
-    return () => clearInterval(interval);
-  }, [isPaused, visibleWidth]);
-
-  const duplicated = [...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS];
+  // Duplicate the list once — animation translates exactly -50% for a seamless loop
+  const loop = [...TESTIMONIALS, ...TESTIMONIALS];
 
   return (
-    <section 
-      id="testimonials" 
-      className="py-16 relative"
+    <section
+      id="testimonials"
+      className="py-12 sm:py-16 relative overflow-hidden"
       style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #F8F9FC 100%)' }}
     >
-      <div className="max-w-7xl mx-auto px-4 mb-10">
+      <div className="max-w-7xl mx-auto px-4 mb-8 sm:mb-10">
         <motion.div
           className="text-center"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-2xl md:text-3xl font-black text-[#020A1B] tracking-tight">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-[#020A1B] tracking-tight px-2">
             What Our Esteemed Users Say About TikyTop
           </h2>
-          <p className="text-sm text-[#64748B] mt-2 max-w-xl mx-auto">
+          <p className="text-xs sm:text-sm text-[#64748B] mt-2 max-w-xl mx-auto px-4">
             Join over 2 million satisfied creators who've transformed their social presence
           </p>
         </motion.div>
       </div>
 
-      <div 
-        className="relative"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
-        <div 
-          ref={containerRef}
-          className="flex gap-3"
-          style={{ 
-            transform: `translateX(-${offset}px)`,
-            transition: isPaused ? 'none' : 'transform 0.03s linear'
-          }}
-        >
-          {duplicated.map((testimonial, index) => (
-            <TestimonialCard 
-              key={`${testimonial.name}-${index}`} 
-              testimonial={testimonial} 
-              index={index % TESTIMONIALS.length} 
+      <div className="relative group">
+        <div className="marquee-track flex w-max">
+          {loop.map((testimonial, index) => (
+            <TestimonialCard
+              key={`${testimonial.name}-${index}`}
+              testimonial={testimonial}
             />
           ))}
         </div>
 
-        <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#F8F9FC] to-transparent pointer-events-none z-10"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#F8F9FC] to-transparent pointer-events-none z-10"></div>
+        <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-r from-[#F8F9FC] to-transparent pointer-events-none z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-l from-[#F8F9FC] to-transparent pointer-events-none z-10" />
       </div>
 
-      <div className="max-w-4xl mx-auto mt-12 px-4">
-        <div className="flex flex-wrap justify-center gap-8 md:gap-16">
+      <div className="max-w-4xl mx-auto mt-10 sm:mt-12 px-4">
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-6 sm:gap-8 md:gap-16">
           {[
             { value: "2M+", label: "Happy Users" },
             { value: "50M+", label: "Orders" },
             { value: "99.9%", label: "Success" },
             { value: "4.9/5", label: "Rating" }
           ].map((stat, index) => (
-            <motion.div 
-              key={index} 
+            <motion.div
+              key={index}
               className="text-center"
               initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
               <div className="text-xl md:text-2xl font-black bg-gradient-to-r from-[#FF00C8] to-[#00F5D4] bg-clip-text text-transparent">
@@ -234,6 +199,30 @@ export default function TestimonialSection() {
           ))}
         </div>
       </div>
+
+      <style>{`
+        @keyframes marquee-scroll {
+          0% { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(-50%, 0, 0); }
+        }
+        .marquee-track {
+          animation: marquee-scroll 60s linear infinite;
+          will-change: transform;
+        }
+        .marquee-track:hover {
+          animation-play-state: paused;
+        }
+        @media (max-width: 640px) {
+          .marquee-track {
+            animation-duration: 40s;
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .marquee-track {
+            animation: none;
+          }
+        }
+      `}</style>
     </section>
   );
 }
