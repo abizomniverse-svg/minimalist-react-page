@@ -1,496 +1,850 @@
 # TikyTop - Social Media Growth Platform
 
-A modern, high-conversion landing page and order management system for TikyTop - a social media growth service helping creators and businesses grow their TikTok, Instagram, and YouTube presence with real followers, likes, views, and engagement.
+<div align="center">
+
+![TikyTop Banner](https://img.shields.io/badge/TikyTop-Social%20Media%20Growth-FF00C8?style=for-the-badge)
+![React](https://img.shields.io/badge/React-19.2.4-61DAFB?style=for-the-badge&logo=react)
+![Vite](https://img.shields.io/badge/Vite-8.0.4-646CFF?style=for-the-badge&logo=vite)
+![Tailwind](https://img.shields.io/badge/Tailwind-4.2.2-38B2AC?style=for-the-badge&logo=tailwind-css)
+
+**A modern, high-conversion landing page and order management system for social media growth services.**
+
+[Features](#features) • [Quick Start](#getting-started) • [Documentation](./docs/) • [API](#api--services) • [Contributing](#contributing)
+
+</div>
+
+---
 
 ## Table of Contents
 
 - [Overview](#overview)
+- [Key Metrics](#key-metrics)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
-- [Installation](#installation)
-- [Available Scripts](#available-scripts)
 - [Project Structure](#project-structure)
-- [Core Components](#core-components)
-- [Pages Overview](#pages-overview)
+- [Architecture](#architecture)
+- [Component Hierarchy](#component-hierarchy)
+- [Route Configuration](#route-configuration)
+- [State Management](#state-management)
+- [Data Flow](#data-flow)
 - [Quick Order Flow](#quick-order-flow)
 - [Authentication System](#authentication-system)
 - [Dashboard Features](#dashboard-features)
-- [Scroll Animations](#scroll-animations)
-- [Responsive Design](#responsive-design)
+- [Order Flow](#order-flow)
 - [Color Scheme](#color-scheme)
-- [API & Services](#api--services)
+- [Available Scripts](#available-scripts)
 - [Deployment](#deployment)
-- [Environment Variables](#environment-variables)
+- [Documentation](#documentation)
 - [Contributing](#contributing)
 - [License](#license)
-- [Support](#support)
+
+---
 
 ## Overview
 
-TikyTop is a full-stack social media growth platform that helps creators and businesses amplify their social media presence. The platform provides services for TikTok, Instagram, and YouTube including followers, likes, views, comments, and shares from real, engaged accounts.
-
-This project includes:
-- High-converting landing page with scroll animations
-- Quick Order tool for instant purchases
-- Full dashboard for order management
-- Authentication system with session management
-- Order processing wizard
-- Analytics and reporting
+TikyTop is a comprehensive social media growth platform designed to help creators and businesses amplify their presence on TikTok, Instagram, and YouTube. The platform provides real followers, likes, views, and engagement from authentic, active accounts.
 
 ### Key Metrics
-- 2M+ Orders Delivered
-- 99.9% Success Rate
-- 4.9/5 User Rating
-- 30-Day Refill Guarantee
+
+| Metric | Value | Description |
+|--------|-------|-------------|
+| Orders Delivered | 2M+ | Total successful orders |
+| Success Rate | 99.9% | Order completion rate |
+| User Rating | 4.9/5 | Average user satisfaction |
+| Refill Guarantee | 30 Days | Money-back guarantee |
+
+---
 
 ## Features
 
-### Landing Page
-- Responsive hero section with Quick Order tool
-- Transparent glass morphism order card
-- Scroll-triggered animations using GSAP ScrollTrigger
-- Floating parallax background effects
-- Progress bar showing scroll position
-- Section reveal animations
-- Package cards with stagger effects
-- Testimonial horizontal scroll with pin
-- FAQ accordion with smooth reveals
-- Feature cards with scale/opacity animations
+### Landing Page Components
 
-### Quick Order System
-- Platform selection (TikTok, Instagram, YouTube)
-- Service selection (Followers, Likes, Views, Comments, Shares)
-- Quantity presets + custom input
-- Real-time price calculation
-- Login check → redirect to dashboard
-- Order pre-filling on dashboard
+| Section | Description | Key Functionality |
+|---------|-------------|-------------------|
+| **HeroSection** | Main hero with platform selection | Platform icons, service selector, quantity picker, CTA button |
+| **TrendingPackage** | Elite growth packages display | Platform cards with SVG icons, hover effects, navigation to dashboard |
+| **TestimonialSection** | User testimonials carousel | Infinite scroll, pause on hover, platform icons, gradient overlays |
+| **FaqSection** | FAQ accordion | Expandable questions, smooth animations |
+| **Footer** | Site footer | Links, social media, contact info |
 
-### Dashboard
-- Overview tab with order statistics
-- New order tab with full wizard
-- Active orders tracking
-- Completed orders history
-- Wallet balance management
-- Profile settings
+### Core Features
 
-### Order Flow
-- Account lookup by profile URL
-- Service package selection
-- Post/package selection (where applicable)
-- Customization options
-- Secure checkout
-- Order confirmation
+- **Quick Order System**: Platform selection, service selection, quantity presets, real-time price calculation
+- **Multi-Step Order Flow**: Package selection, account verification, post selection, checkout, confirmation
+- **User Dashboard**: Order overview, active orders, completed orders, wallet management
+- **Authentication**: Email/password login, demo login, session management, protected routes
+- **Responsive Design**: Mobile-first approach, multiple breakpoints, adaptive layouts
 
-### Authentication
-- Email/password login
-- Demo login for testing
-- Session management with sessionStorage
-- Protected routes with AuthGuard
-- Redirect after login with state
-
-### Animations
-- GSAP ScrollTrigger integration
-- Progress bar synced to scroll
-- Parallax backgrounds
-- Fade-in section reveals
-- Scale/opacity effects
-- Horizontal scroll sections
-- Accordion animations
+---
 
 ## Tech Stack
 
-### Frontend
-- **React 18** - UI library with hooks
-- **Vite** - Fast build tool
-- **Framer Motion** - Animation library (for some components)
-- **GSAP** - Professional animations with ScrollTrigger
-- **React Router v6** - Client-side routing
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                              TECHNOLOGY STACK                                │
+└─────────────────────────────────────────────────────────────────────────────┘
 
-### Styling
-- **Tailwind CSS** - Utility-first CSS framework
-- **CSS Variables** - Theme customization
-- **Backdrop Filter** - Glass morphism effects
+┌─────────────────────┐     ┌─────────────────────┐     ┌─────────────────────┐
+│                     │     │                     │     │                     │
+│     FRONTEND        │     │      STYLING        │     │    ANIMATION        │
+│                     │     │                     │     │                     │
+│  ┌───────────────┐  │     │  ┌───────────────┐  │     │  ┌───────────────┐  │
+│  │  React 19.2.4 │  │     │  │ Tailwind CSS │  │     │  │   GSAP 3.15   │  │
+│  │  React Router │  │     │  │    4.2.2     │  │     │  │ Framer Motion │  │
+│  │     7.14.1    │  │     │  │              │  │     │  │   12.38.0     │  │
+│  └───────────────┘  │     │  └───────────────┘  │     │  └───────────────┘  │
+│                     │     │                     │     │                     │
+│  ┌───────────────┐  │     │  ┌───────────────┐  │     │  ┌───────────────┐  │
+│  │  Vite 8.0.4  │  │     │  │    CSS 3      │  │     │  │   CSS Animations│ │
+│  │  ESBuild     │  │     │  │              │  │     │  │                │  │
+│  │  Rollup      │  │     │  │              │  │     │  │                │  │
+│  └───────────────┘  │     │  └───────────────┘  │     │  └───────────────┘  │
+│                     │     │                     │     │                     │
+└─────────────────────┘     └─────────────────────┘     └─────────────────────┘
 
-### Development
-- **ESLint** - Code quality
-- **Git** - Version control
-- **npm** - Package management
+┌─────────────────────┐     ┌─────────────────────┐     ┌─────────────────────┐
+│                     │     │                     │     │                     │
+│    DEVELOPMENT      │     │    DEPLOYMENT       │     │   QUALITY          │
+│                     │     │                     │     │                     │
+│  ┌───────────────┐  │     │  ┌───────────────┐  │     │  ┌───────────────┐  │
+│  │  ESLint 9.39  │  │     │  │    Vercel     │  │     │  │  Pre-commit   │  │
+│  │  Prettier    │  │     │  │    Netlify   │  │     │  │   Hooks      │  │
+│  │  Git         │  │     │  │    Static    │  │     │  │              │  │
+│  └───────────────┘  │     │  └───────────────┘  │     │  └───────────────┘  │
+│                     │     │                     │     │                     │
+└─────────────────────┘     └─────────────────────┘     └─────────────────────┘
+```
 
-### Build & Deploy
-- **Vite Build** - Optimized production builds
-- **Static Hosting** - Vercel, Netlify compatible
+---
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js v16+
-- npm v7+ or yarn
-- Git
+| Requirement | Version | Description |
+|------------|---------|-------------|
+| Node.js | v16+ | JavaScript runtime |
+| npm | v7+ | Package manager |
+| Git | Latest | Version control |
 
 ### Installation
 
-1. Clone the repository
-   ```bash
-   git clone https://github.com/abizomniverse-svg/minimalist-react-page.git
-   ```
+```bash
+# 1. Clone the repository
+git clone https://github.com/abizomniverse-svg/minimalist-react-page.git
 
-2. Navigate to the project directory
-   ```bash
-   cd minimalist-react-page
-   ```
+# 2. Navigate to project
+cd TikyTop-Repo
 
-3. Install dependencies
-   ```bash
-   npm install
-   ```
+# 3. Install dependencies
+npm install
 
-4. Start the development server
-   ```bash
-   npm run dev
-   ```
+# 4. Start development server
+npm run dev
 
-The application will be available at `http://localhost:5173`
+# 5. Open in browser
+# http://localhost:5001
+```
 
-## Available Scripts
+### Build for Production
 
-| Script | Description |
-|--------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview production build |
-| `npm run lint` | Run ESLint |
+```bash
+# Build optimized production bundle
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+---
 
 ## Project Structure
 
 ```
-tikytop/
-├── public/
-│   └── icons.svg              # SVG icons
+TikyTop-Repo/
+│
+├── index.html                    # Vite entry HTML
+├── package.json                  # Dependencies & scripts
+├── vite.config.js               # Vite configuration
+├── eslint.config.js             # ESLint rules
+│
+├── docs/                         # Documentation
+│   ├── FILE_STRUCTURE.md        # File structure guide
+│   └── DATA_FLOW.md             # Data flow documentation
+│
 ├── src/
-│   ├── assets/               # Static assets
+│   ├── main.jsx                 # React DOM entry point
+│   ├── App.jsx                  # Root component
+│   ├── index.css                # Global styles
+│   │
 │   ├── components/
+│   │   ├── ui/
+│   │   │   └── Button.jsx       # Reusable button
 │   │   ├── layout/
-│   │   │   ├── Navbar.jsx    # Navigation header
-│   │   │   └── Footer.jsx    # Page footer
-│   │   └── AuthGuard.jsx      # Route protection
-│   ├── hooks/
-│   │   └── useScrollAnimations.jsx  # GSAP animations hook
+│   │   │   └── Navbar.jsx       # Navigation header
+│   │   └── AuthGuard.jsx        # Route protection
+│   │
 │   ├── pages/
-│   │   ├── Auth/
-│   │   │   └── Login.jsx     # Login page
-│   │   ├── Dashboard.jsx     # Main dashboard
 │   │   ├── Landing/
 │   │   │   ├── LandingPage.jsx
 │   │   │   ├── HeroSection.jsx
 │   │   │   ├── TrendingPackage.jsx
 │   │   │   ├── TestimonialSection.jsx
 │   │   │   ├── FaqSection.jsx
-│   │   │   └── ...more sections
-│   │   └── Order/
-│   │       └── OrderPage.jsx
+│   │   │   ├── Footer.jsx
+│   │   │   ├── ServicesSection.jsx
+│   │   │   ├── PremiumFeatures.jsx
+│   │   │   ├── Spotlight.jsx
+│   │   │   ├── WhyTikytop.jsx
+│   │   │   ├── OrderStepsSection.jsx
+│   │   │   ├── HowItWorksSection.jsx
+│   │   │   ├── TargetedAudience.jsx
+│   │   │   └── AnalyticsSection.jsx
+│   │   │
+│   │   ├── Auth/
+│   │   │   ├── Login.jsx
+│   │   │   └── Register.jsx
+│   │   │
+│   │   ├── Order/
+│   │   │   ├── OrderPage.jsx
+│   │   │   ├── data/
+│   │   │   │   └── servicesData.js
+│   │   │   └── components/
+│   │   │       ├── OrderProgress.jsx
+│   │   │       ├── StepSelectPackage.jsx
+│   │   │       ├── StepFindAccount.jsx
+│   │   │       ├── StepSelectPosts.jsx
+│   │   │       ├── StepCheckout.jsx
+│   │   │       └── StepSuccess.jsx
+│   │   │
+│   │   ├── Dashboard.jsx
+│   │   └── Legal/
+│   │       ├── PrivacyPolicy.jsx
+│   │       └── TermsOfService.jsx
+│   │
 │   ├── routes/
-│   │   └── AppRoutes.jsx
+│   │   └── AppRoutes.jsx        # Route definitions
+│   │
 │   ├── utils/
-│   │   └── auth.js          # Auth utilities
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── index.css
-├── .gitignore
-├── eslint.config.js
-├── index.html
-├── package.json
-├── tailwind.config.js
-└── vite.config.js
+│   │   ├── auth.js              # Authentication utilities
+│   │   ├── constants.js         # App constants
+│   │   └── dashboardStore.js    # Dashboard state
+│   │
+│   ├── hooks/
+│   │   └── useScrollAnimations.jsx
+│   │
+│   └── assets/
+│       └── icon/
+│           ├── icons8-tiktok-50.svg
+│           ├── icons8-instagram-50.svg
+│           └── icons8-youtube-50.svg
+│
+└── public/
+    ├── favicon.svg
+    └── icons.svg
 ```
 
-## Core Components
+---
 
-### Layout
-- **Navbar** - Responsive navigation with links and auth
-- **Footer** - Links, social media, contact info
+## Architecture
 
-### Landing Sections
-- **HeroSection** - Main hero with Quick Order
-- **OrderStepsSection** - Visual order guide
-- **TrendingPackage** - Elite growth packages
-- **PremiumFeatures** - Feature highlights
-- **AnalyticsSection** - Statistics and numbers
-- **Spotlight** - Special offers
-- **TargetedAudience** - Audience info
-- **WhyTikytop** - Value proposition
-- **TestimonialSection** - User testimonials with scroll
-- **FaqSection** - FAQ accordion
+### Application Flow
 
-### Auth
-- **Login** - Email/password login
-- **Register** - Account registration
-- **AuthGuard** - Route protection wrapper
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                            APPLICATION ARCHITECTURE                           │
+└─────────────────────────────────────────────────────────────────────────────┘
 
-## Pages Overview
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                              BROWSER                                         │
+│                                                                              │
+│  ┌─────────────────────────────────────────────────────────────────────┐   │
+│  │                        index.html                                     │   │
+│  │                           │                                           │   │
+│  │                           ▼                                           │   │
+│  │  ┌───────────────────────────────────────────────────────────────┐  │   │
+│  │  │                        main.jsx                               │  │   │
+│  │  │                    (React Entry Point)                        │  │   │
+│  │  └───────────────────────────┬────────────────────────────────────┘  │   │
+│  │                              │                                        │   │
+│  │                              ▼                                        │   │
+│  │  ┌───────────────────────────────────────────────────────────────┐  │   │
+│  │  │                         App.jsx                              │  │   │
+│  │  │                      (Root Component)                         │  │   │
+│  │  └───────────────────────────┬────────────────────────────────────┘  │   │
+│  │                              │                                        │   │
+│  │                              ▼                                        │   │
+│  │  ┌───────────────────────────────────────────────────────────────┐  │   │
+│  │  │                       AppRoutes.jsx                           │  │   │
+│  │  │                    (Router Configuration)                     │  │   │
+│  │  └───────────────────────┬───────────────────────────────────────┘  │   │
+│  │                          │                                           │   │
+│  │     ┌────────────────────┼────────────────────┐                     │   │
+│  │     │                    │                    │                     │   │
+│  │     ▼                    ▼                    ▼                     │   │
+│  │  ┌──────────┐     ┌──────────┐         ┌──────────┐              │   │
+│  │  │ Landing  │     │   Auth   │         │ Protected │              │   │
+│  │  │  Page    │     │  Pages   │         │  Routes   │              │   │
+│  │  │   (/)    │     │          │         │          │              │   │
+│  │  └──────────┘     └──────────┘         └────┬─────┘              │   │
+│  │                                           │                      │   │
+│  │                                           ▼                      │   │
+│  │                                    ┌──────────────┐              │   │
+│  │                                    │  Dashboard   │              │   │
+│  │                                    │     or      │              │   │
+│  │                                    │  OrderPage  │              │   │
+│  │                                    └──────────────┘              │   │
+│  └─────────────────────────────────────────────────────────────────────┘   │
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
 
-### Landing Page (`/`)
-The main landing page combining all sections:
-- Hero with Quick Order tool
-- Order steps
-- Packages
-- Features
-- Testimonials
-- FAQ
+---
 
-### Login Page (`/login`)
-- Email/password form
-- Demo login button
-- Redirects back after auth
+## Component Hierarchy
 
-### Dashboard (`/dashboard`)
-Full order management:
-- Overview with stats
-- New order creation
-- Active orders
-- Completed orders
-- Wallet
-- Settings
+```
+App
+└── AppRoutes
+    ├── LandingPage
+    │   ├── Navbar
+    │   ├── HeroSection
+    │   │   └── [Platform Icons (SVG)]
+    │   ├── TrendingPackage
+    │   │   └── [Platform Icons (SVG)]
+    │   ├── TestimonialSection
+    │   │   └── TestimonialCard × 24 (infinite)
+    │   ├── FaqSection
+    │   │   └── FaqItem × n
+    │   ├── ServicesSection
+    │   ├── PremiumFeatures
+    │   ├── WhyTikytop
+    │   ├── TargetedAudience
+    │   ├── Spotlight
+    │   └── Footer
+    │
+    ├── Login
+    └── Register
+    │
+    └── AuthGuard (Protected)
+        ├── Dashboard
+        │   ├── Navbar
+        │   └── Footer
+        │
+        └── OrderPage
+            ├── Navbar
+            ├── OrderProgress
+            ├── StepSelectPackage
+            ├── StepFindAccount
+            ├── StepSelectPosts (conditional)
+            ├── StepCheckout
+            ├── StepSuccess
+            └── Footer
+```
 
-### Order Page (`/order`)
-Complete order wizard:
-- Find account
-- Select package
-- Select posts
-- Customize
-- Checkout
-- Success
+---
+
+## Route Configuration
+
+| Path | Component | Auth Required | Description |
+|------|-----------|---------------|-------------|
+| `/` | LandingPage | No | Main landing page |
+| `/login` | Login | No | User login |
+| `/register` | Register | No | User registration |
+| `/dashboard` | Dashboard | Yes | User dashboard |
+| `/order` | OrderPage | Yes | Order wizard |
+| `/order/:serviceType` | OrderPage | Yes | Pre-filled order |
+| `/privacy-policy` | PrivacyPolicy | No | Privacy policy |
+| `/terms-of-service` | TermsOfService | No | Terms of service |
+
+---
+
+## State Management
+
+### State Flow Diagram
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           STATE MANAGEMENT                                  │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  GLOBAL STATE (sessionStorage)                                               │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │  Key: "tikytop_demo_session"                                           │  │
+│  │  ┌─────────────────────────────────────────────────────────────────┐ │  │
+│  │  │  {                                                              │ │  │
+│  │  │    user: { name, email, avatar },                               │ │  │
+│  │  │    createdAt: timestamp                                         │ │  │
+│  │  │  }                                                              │ │  │
+│  │  └─────────────────────────────────────────────────────────────────┘ │  │
+│  └───────────────────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  COMPONENT STATE (useState)                                                   │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │                                                                       │  │
+│  │  AppRoutes                         HeroSection                       │  │
+│  │  ┌──────────────────┐              ┌──────────────────┐              │  │
+│  │  │ session         │              │ selectedPlatform │              │  │
+│  │  │ isLoading       │              │ selectedService  │              │  │
+│  │  └──────────────────┘              │ quantity         │              │  │
+│  │                                   └──────────────────┘              │  │
+│  │                                                                       │  │
+│  │  TestimonialSection               OrderPage                         │  │
+│  │  ┌──────────────────┐              ┌──────────────────┐              │  │
+│  │  │ offset           │              │ currentStepIndex │              │  │
+│  │  │ isPaused         │              │ orderData        │              │  │
+│  │  └──────────────────┘              └──────────────────┘              │  │
+│  │                                                                       │  │
+│  └───────────────────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Data Flow
+
+### Landing Page Data Flow
+
+```
+User Visits Landing Page
+         │
+         ▼
+┌───────────────────────────────────────────────────────────────────��─────────┐
+│                           HERO SECTION                                       │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │                                                                       │  │
+│  │   Platform Selection          Service Selection      Quantity        │  │
+│  │   ┌─────┐ ┌─────┐ ┌─────┐    ┌─────────────────┐    ┌────┬────┬────┐ │  │
+│  │   │ 🎵  │ │ 📸  │ │ ▶️  │    │ Followers       │    │500 │ 1K │ 2K │ │  │
+│  │   │TTOK │ │ IG  │ │ YT  │    │ Likes           │    │ 5K │    │    │ │  │
+│  │   └─────┘ └─────┘ └─────┘    │ Views           │    └────┴────┴────┘ │  │
+│  │                              │ Comments        │                    │  │
+│  │                              └─────────────────┘                       │  │
+│  │                                                                       │  │
+│  │   [ Get Started ] ───────▶ navigate('/dashboard')                   │  │
+│  │                                                                       │  │
+│  └───────────────────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        ELITE PACKAGES SECTION                                │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │                                                                       │  │
+│  │   ┌──────────────┐  ┌──────────────┐  ┌──────────────┐               │  │
+│  │   │   TikTok    │  │  Instagram   │  │   YouTube    │               │  │
+│  │   │     🎵      │  │      📸      │  │      ▶️      │               │  │
+│  │   │             │  │              │  │              │               │  │
+│  │   │  Growth     │  │   Growth     │  │   Growth     │               │  │
+│  │   │  Services   │  │   Services  │  │   Services   │               │  │
+│  │   │             │  │              │  │              │               │  │
+│  │   │  [Get       │  │  [Get       │  │  [Get        │               │  │
+│  │   │   Started]  │  │   Started]  │  │   Started]  │               │  │
+│  │   └──────────────┘  └──────────────┘  └──────────────┘               │  │
+│  │                                                                       │  │
+│  └───────────────────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Testimonials Infinite Scroll
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      TESTIMONIALS INFINITE SCROLL                            │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  INITIALIZATION                                                              │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │  TESTIMONIALS (8 items) × 3 = 24 cards                               │  │
+│  │  ┌───┐ ┌───┐ ┌───┐ ┌───┐ ┌───┐ ┌───┐ ┌───┐ ┌───┐                     │  │
+│  │  │ T │ │ T │ │ T │ │ T │ │ T │ │ T │ │ T │ │ T │ ... (24 total)      │  │
+│  │  └───┘ └───┘ └───┘ └───┘ └───┘ └───┘ └───┘ └───┘                     │  │
+│  └───────────────────────────────────────────────────────────────────────┘  │
+│                                    │                                         │
+│                                    ▼                                         │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │  useEffect Animation Loop                                              │  │
+│  │  ┌─────────────────────────────────────────────────────────────────┐  │  │
+│  │  │  setInterval every 30ms:                                        │  │  │
+│  │  │    offset += 1                                                  │  │  │
+│  │  │    CSS: transform: translateX(-${offset}px)                    │  │  │
+│  │  └─────────────────────────────────────────────────────────────────┘  │  │
+│  └───────────────────────────────────────────────────────────────────────┘  │
+│                                    │                                         │
+│                                    ▼                                         │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │  USER INTERACTION                                                      │  │
+│  │  ┌─────────────────────────────────────────────────────────────────┐  │  │
+│  │  │  onMouseEnter  ────────▶  isPaused = true  ────────▶  STOP     │  │  │
+│  │  │  onMouseLeave  ────────▶  isPaused = false  ──────▶  RESUME   │  │  │
+│  │  └─────────────────────────────────────────────────────────────────┘  │  │
+│  └───────────────────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
 
 ## Quick Order Flow
 
-1. User selects platform (TikTok/Instagram/YouTube)
-2. User selects service (Followers/Likes/Views/etc.)
-3. User enters profile URL
-4. User selects quantity
-5. Price calculates in real-time
-6. User clicks "Order Now"
-7. If not logged in → redirect to login
-8. After login → auto-redirect to dashboard
-9. Order form pre-filled in dashboard modal
+### Flow Diagram
 
-```javascript
-// Quick Order handleOrder logic
-const handleOrder = () => {
-  if (!isAuthenticated()) {
-    navigate('/login', { state: { from: '/dashboard', order: {...} } });
-    return;
-  }
-  navigate('/dashboard', { state: { order: {...} } });
-};
 ```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                            QUICK ORDER FLOW                                   │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+    ┌─────────────┐
+    │   User      │
+    │   Lands on  │
+    │   Homepage  │
+    └──────┬──────┘
+           │
+           ▼
+    ┌─────────────┐
+    │  Selects    │
+    │  Platform   │ ◀── TikTok / Instagram / YouTube
+    └──────┬──────┘
+           │
+           ▼
+    ┌─────────────┐
+    │  Selects    │
+    │  Service    │ ◀── Followers / Likes / Views / Comments
+    └──────┬──────┘
+           │
+           ▼
+    ┌─────────────┐
+    │  Enters     │
+    │  Profile URL│ ◀── @username
+    └──────┬──────┘
+           │
+           ▼
+    ┌─────────────┐
+    │  Selects    │
+    │  Quantity   │ ◀── 500 / 1K / 2.5K / 5K
+    └──────┬──────┘
+           │
+           ▼
+    ┌─────────────┐
+    │    Clicks   │
+    │  "Get       │     ┌─────────────┐
+    │   Started"  │ ──▶ │   Check     │
+    └─────────────┘     │  Session    │
+                        └──────┬──────┘
+                               │
+                    ┌──────────┴──────────┐
+                    │                     │
+                    ▼                     ▼
+              ┌──────────┐          ┌──────────┐
+              │  NOT     │          │   IS    │
+              │  LOGGED  │          │  LOGGED │
+              │   IN     │          │   IN    │
+              └────┬─────┘          └────┬─────┘
+                   │                    │
+                   ▼                    ▼
+            ┌─────────────┐      ┌─────────────┐
+            │ Redirect to │      │   Navigate  │
+            │  /login     │      │ /dashboard  │
+            └──────┬─────┘      └─────────────┘
+                   │
+                   ▼
+            ┌─────────────┐
+            │  User Logs  │
+            │    In       │
+            └──────┬──────┘
+                   │
+                   ▼
+            ┌─────────────┐
+            │ Redirect to │
+            │ /dashboard  │
+            └─────────────┘
+```
+
+---
 
 ## Authentication System
 
-### Session Management
-Uses sessionStorage for demo authentication:
+### Session Flow
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         AUTHENTICATION FLOW                                   │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  1. APP LOAD                                                                │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │                                                                       │  │
+│  │   AppRoutes.jsx                                                       │  │
+│  │   ┌─────────────────────────────────────────────────────────────┐   │  │
+│  │   │  useEffect(() => {                                             │   │  │
+│  │   │    const sessionData = getSession();                          │   │  │
+│  │   │    setSession(sessionData);                                   │   │  │
+│  │   │    setIsLoading(false);                                        │   │  │
+│  │   │  }, []);                                                       │   │  │
+│  │   └─────────────────────────────────────────────────────────────┘   │  │
+│  │                                                                       │  │
+│  └───────────────────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  2. SESSION CHECK                                                           │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │                                                                       │  │
+│  │   AuthGuard.jsx                                                        │  │
+│  │   ┌─────────────────────────────────────────────────────────────┐   │  │
+│  │   │  if (!isAuthenticated()) {                                    │   │  │
+│  │   │    return <Navigate to="/login" state={{ from }} />;          │   │  │
+│  │   │  }                                                             │   │  │
+│  │   │  return children;                                              │   │  │
+│  │   └─────────────────────────────────────────────────────────────┘   │  │
+│  │                                                                       │  │
+│  └───────────────────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  3. LOGIN PROCESS                                                           │
+│  ┌───────────────────────────────────────────────────────────────────────┐  │
+│  │                                                                       │  │
+│  │   Login.jsx                                                            │  │
+│  │   ┌─────────────────────────────────────────────────────────────┐   │  │
+│  │   │  const handleLogin = () => {                               │   │  │
+│  │   │    setSession({ name, email, avatar });                   │   │  │
+│  │   │    navigate(from || '/dashboard');                        │   │  │
+│  │   │  };                                                         │   │  │
+│  │   └─────────────────────────────────────────────────────────────┘   │  │
+│  │                                                                       │  │
+│  └───────────────────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Session Storage Structure
 
 ```javascript
-// utils/auth.js
-const SESSION_KEY = 'tikytop_demo_session';
-
-export function setSession(user) {
-  sessionStorage.setItem(SESSION_KEY, JSON.stringify({ user }));
-}
-
-export function isAuthenticated() {
-  return !!getSession();
+// Key: 'tikytop_demo_session'
+{
+  user: {
+    name: "Demo User",
+    email: "demo@tikytop.com",
+    avatar: "https://i.pravatar.cc/150?u=demo"
+  },
+  createdAt: 1714000000000
 }
 ```
 
-### Protected Routes
-The AuthGuard component protects dashboard routes:
-
-```javascript
-// components/AuthGuard.jsx
-if (!isAuthenticated()) {
-  return <Navigate to="/login" state={{ from: location }} />;
-}
-```
-
-### Login Redirect
-After login, users are redirected to their intended destination:
-
-```javascript
-// pages/Auth/Login.jsx
-const from = location.state?.from || '/dashboard';
-navigate(from, { replace: true });
-```
+---
 
 ## Dashboard Features
 
-### Overview Tab
-- Total orders count
-- Active orders count
-- Completed orders count
-- Wallet balance
-- Recent orders list
+### Dashboard Overview
 
-### New Order Tab
-- Platform selection
-- Service selection
-- URL input
-- Quantity selection
-- Price calculation
-- Submit order
+| Tab | Features |
+|-----|----------|
+| **Overview** | Stats cards, recent orders, quick actions |
+| **New Order** | Full order wizard with platform/service selection |
+| **Active Orders** | Order list with status, progress, actions |
+| **Completed** | Order history with dates |
+| **Wallet** | Balance, transactions, add funds |
+| **Settings** | Profile, notifications, preferences |
 
-### Orders Tracking
-- Status indicators (Processing, Completed, Partial, Cancelled)
-- Order history with dates
-- Refund requests
+---
 
-### Wallet
-- Balance display
-- Transaction history
-- Add funds option
+## Order Flow
 
-## Scroll Animations
+### Multi-Step Order Process
 
-The project uses GSAP ScrollTrigger for scroll-driven animations:
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         ORDER FLOW STEPS                                    │
+└─────────────────────────────────────────────────────────────────────────────┘
 
-### Setup
-```javascript
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+┌─────────┐    ┌─────────┐    ┌─────────┐    ┌─────────┐    ┌─────────┐
+│ PACKAGE │───▶│ ACCOUNT │───▶│  POSTS  │───▶│CHECKOUT │───▶│SUCCESS │
+│         │    │         │    │ (optional)│    │         │    │         │
+└─────────┘    └─────────┘    └─────────┘    └─────────┘    └─────────┘
+    │              │              │               │               │
+    ▼              ▼              ▼               ▼               ▼
+┌─────────┐    ┌─────────┐    ┌─────────┐    ┌─────────┐    ┌─────────┐
+│ Select  │    │  Enter  │    │ Select  │    │  Enter  │    │  Order  │
+│ package │    │ profile │    │  posts  │    │ billing │    │confirmed│
+│ & amount│    │   URL   │    │         │    │ details │    │         │
+└─────────┘    └─────────┘    └─────────┘    └─────────┘    └─────────┘
 
-gsap.registerPlugin(ScrollTrigger);
+Step Details:
+────────────────────────────────────────────────────────────
+
+Step 1: Package Selection
+├── Select platform (TikTok/Instagram/YouTube)
+├── Choose package tier (Basic/Standard/Premium/Enterprise)
+└── View pricing and delivery time
+
+Step 2: Account Verification  
+├── Enter profile URL or username
+└── System validates account exists
+
+Step 3: Post Selection (if applicable)
+├── Select specific posts to boost
+└── Or skip for general growth
+
+Step 4: Checkout
+├── Review order summary
+├── Enter payment information
+└── Apply promo codes
+
+Step 5: Confirmation
+├── Order ID generated
+├── Estimated delivery time
+└── Confirmation email sent
 ```
 
-### Custom Hook
-```javascript
-// hooks/useScrollAnimations.jsx
-- Progress bar synced to scroll
-- Section reveal animations
-- Parallax background effects
-- Package cards stagger
-- Testimonials horizontal scroll
-- FAQ accordion reveals
-- Feature cards scale
-```
-
-### Animation Types
-- `toggleActions: 'play none none reverse'` - Bidirectional
-- `scrub: 1` - Smooth scroll-linked
-- `stagger` - Sequential delays
-- `markers: true` - Debug (development)
-
-## Responsive Design
-
-Breakpoints used:
-- Mobile: < 640px
-- Tablet: 640px - 1024px
-- Desktop: > 1024px
-- Large: > 1280px
-
-Grid system:
-- `grid-cols-1` - Mobile
-- `md:grid-cols-2` - Tablet
-- `lg:grid-cols-3` - Desktop
-- `xl:grid-cols-4` - Large
+---
 
 ## Color Scheme
 
-### Primary Colors
-- `#FF00C8` - Pink/Magenta (main brand)
-- `#00F5D4` - Cyan/teal (accent)
-- `#A6FF00` - Lime green (highlight)
+### Brand Colors
 
-### Neutrals
-- `#020A1B` - Dark/navy (text)
-- `#64748B` - Slate (secondary text)
-- `#FAFAFA` - Off-white (backgrounds)
-
-### Gradients
-- Hero: Linear gradient backgrounds
-- Cards: Gradient borders/overlays
-- Buttons: Gradient fills
+| Color | Hex | Usage |
+|-------|-----|-------|
+| Primary Pink | `#FF00C8` | Main brand, CTAs, highlights |
+| Accent Cyan | `#00F5D4` | Secondary actions, gradients |
+| Highlight Lime | `#A6FF00` | Success states, stars |
+| Dark Navy | `#020A1B` | Primary text |
+| Slate | `#64748B` | Secondary text |
+| Off White | `#FAFAFA` | Backgrounds |
 
 ### Platform Colors
-- TikTok: `#FF00C8` to `#7E22CE`
-- Instagram: `#00F5D4` to `#405DE6`
-- YouTube: `#A6FF00` to `#22C55E`
 
-## API & Services
+| Platform | Primary | Secondary | Gradient |
+|----------|---------|-----------|----------|
+| TikTok | `#FF00C8` | `#7E22CE` | `linear-gradient(135deg, #FF00C8 0%, #7E22CE 100%)` |
+| Instagram | `#833AB4` | `#FD1D1D` | `linear-gradient(135deg, #833AB4 0%, #FD1D1D 50%, #FCB045 100%)` |
+| YouTube | `#FF0000` | `#CC0000` | `linear-gradient(135deg, #FF0000 0%, #CC0000 100%)` |
 
-### Service Pricing (Example)
-```javascript
-const SERVICES = {
-  tiktok: [
-    { id: 'followers', price: 2.50 },
-    { id: 'likes', price: 0.25 },
-    { id: 'views', price: 0.03 },
-    { id: 'comments', price: 3.50 },
-    { id: 'shares', price: 4.20 }
-  ],
-  // Instagram, YouTube...
-};
+### Utility Classes
+
+```css
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #FF00C8 0%, #00F5D4 100%);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #FF00C8 0%, #00F5D4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 ```
 
-### Quantity Presets
-```javascript
-const QUANTITIES = [100, 500, 1000, 2500, 5000, 10000];
-```
+---
+
+## Available Scripts
+
+| Script | Description |
+|--------|-------------|
+| `npm run dev` | Start development server on port 5001 |
+| `npm run build` | Build production bundle to `dist/` |
+| `npm run preview` | Preview production build locally |
+| `npm run lint` | Run ESLint to check code quality |
+
+---
 
 ## Deployment
 
-### Vercel
+### Vercel Deployment
+
 ```bash
+# 1. Install Vercel CLI
 npm i -g vercel
+
+# 2. Deploy
 vercel
+
+# 3. Or connect GitHub for auto-deploy
 ```
 
-### Netlify
+### Netlify Deployment
+
 1. Connect GitHub repository
 2. Set build command: `npm run build`
 3. Set publish directory: `dist`
+4. Deploy
 
-### Build Output
-Production files are built to the `dist` directory:
-- `index.html`
-- `assets/index-*.css`
-- `assets/index-*.js`
+### Manual Deployment
 
-## Environment Variables
+```bash
+# Build
+npm run build
 
-Create `.env` in root:
-```
-VITE_API_URL=https://api.tikytop.com
-VITE_APP_NAME=TikyTop
+# Deploy dist/ folder to any static hosting
 ```
 
-Variables must be prefixed with `VITE_` for client exposure.
+---
+
+## Documentation
+
+For detailed documentation, see the following files in the `/docs` directory:
+
+| File | Description |
+|------|-------------|
+| [FILE_STRUCTURE.md](./docs/FILE_STRUCTURE.md) | Complete file structure with descriptions |
+| [DATA_FLOW.md](./docs/DATA_FLOW.md) | Data flow diagrams and explanations |
+
+---
 
 ## Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test with `npm run dev`
-5. Build with `npm run build`
-6. Commit and push
-7. Open a Pull Request
+### Development Workflow
 
-### Code Style
-- Use functional components with hooks
+```bash
+# 1. Fork and clone
+git clone https://github.com/abizomniverse-svg/minimalist-react-page.git
+
+# 2. Create feature branch
+git checkout -b feature/your-feature-name
+
+# 3. Make changes
+# ... edit code ...
+
+# 4. Run lint
+npm run lint
+
+# 5. Build test
+npm run build
+
+# 6. Commit and push
+git add .
+git commit -m "Add your feature"
+git push origin feature/your-feature-name
+
+# 7. Open Pull Request
+```
+
+### Code Standards
+
+- Use functional components with React Hooks
 - Follow ESLint rules
 - Use meaningful variable names
-- Comment complex logic
+- Add comments for complex logic
+- Test on multiple screen sizes
+
+---
 
 ## License
 
 MIT License - See LICENSE file for details.
 
-## Support
-
-- GitHub Issues: Report bugs
-- Email: support@tikytop.com
-- Contact: Via website contact form
-
 ---
 
-Built with ❤️ using React + Vite + GSAP
+<div align="center">
+
+**Built with ❤️ using React + Vite + Tailwind + GSAP**
+
+© 2024 TikyTop. All rights reserved.
+
+</div>
